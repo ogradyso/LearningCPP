@@ -73,4 +73,35 @@ int main() {
 	// a the same type as a single element of the array.
 	size_t n_elements = sizeof(values) / sizeof(short);
 	printf("Length of values array: %zd\n", n_elements);
+
+	//C-style strings
+	char english[] = "A book holds a house of gold.";
+	char16_t chinese[] = u"\u4e66\u4e2d\u81ea\u6709\u9ec4\u91d1\u5c4b";
+	printf("English: %s\n", english);
+	//printf("Chinese: %s\n", chinese);
+
+	// make array with ASCII printable letters, print the result, and then convert the array to uppercase
+	char alphabet[27];
+	for (int i = 0; i < 26; i++) {
+		alphabet[i] = i + 97;
+	}
+	alphabet[26] = 0;
+	printf("%s\n", alphabet);
+	for (int i = 0; i < 26; i++) {
+		alphabet[i] = i + 65;
+	}
+	printf("%s\n", alphabet);
+
+	//user defined types
+	//enumerations
+	enum class Race {
+		Dinan, 
+		Teklan, 
+		Ivyn, 
+		Moiran, 
+		Camite, 
+		Julian, 
+		Aidan
+	};
+	Race langobard_race = Race::Aidan;
 }
