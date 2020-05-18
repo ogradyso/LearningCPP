@@ -54,4 +54,13 @@ int main() {
 	int my_2ndArray[] = { 1,2,3,4,5 };
 	printf("Print the 3rd element of an array: %d\n", my_2ndArray[2]);
 	                 
+	// for loops:
+	unsigned long maximum = 0;
+	unsigned long values[] = { 10, 50, 20, 40, 0 };
+	for (size_t i = 0; i < 5; i++) {
+		if (values[i] > maximum) maximum = values[i];
+	}
+	printf("The maximum value is %lu", maximum);
+
+
 }
