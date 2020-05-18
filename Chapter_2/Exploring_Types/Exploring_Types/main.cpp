@@ -60,7 +60,17 @@ int main() {
 	for (size_t i = 0; i < 5; i++) {
 		if (values[i] > maximum) maximum = values[i];
 	}
-	printf("The maximum value is %lu", maximum);
+	printf("The maximum value is %lu\n", maximum);
 
+	// range based for loop:
+	for (unsigned long value : values) {
+		if (value > maximum) maximum = value;
+	}
+	printf("Range-based for loop found maximum: %lu\n", maximum);
 
+	// find the number of elements in an array using size_t:
+	// take the size of the array (in bytes) and divide by the size of 
+	// a the same type as a single element of the array.
+	size_t n_elements = sizeof(values) / sizeof(short);
+	printf("Length of values array: %zd\n", n_elements);
 }
