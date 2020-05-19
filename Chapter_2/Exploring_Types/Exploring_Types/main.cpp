@@ -154,7 +154,7 @@ int main() {
 	};
 
 	//fully featured C++ Classes
-	struct ClockOfTheLongNow {
+	/*struct ClockOfTheLongNow {
 		void add_year() {
 			year++;
 		}
@@ -170,5 +170,29 @@ int main() {
 	printf("Year: %d\n", clock.year);
 	clock.year = clock.add_years(20);
 	printf("Year: %d\n", clock.year);
+*/
+	//Access controls
+	struct ClockOfTheLongNow {
+		void add_year() {
+			year++;
+		}
+		bool set_year(int new_year) {
+			if (new_year < 2019) return false;
+			year = new_year;
+			return true;
+		}
+		int get_year() {
+			return year;
+		}
+	private:
+		int year;
+	};
+
+	ClockOfTheLongNow clock;
+	if(!clock.set_year(2018)) { // will fail; 2018 < 2019
+		clock.set_year(2019);
+	}
+	clock.add_year();
+	printf("Year: %d\n", clock.get_year());
 
 }
