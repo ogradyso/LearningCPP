@@ -104,4 +104,71 @@ int main() {
 		Aidan
 	};
 	Race langobard_race = Race::Aidan;
+
+	// using a switch-case statement with an enum class
+	switch (langobard_race) {
+	case Race::Dinan: {
+		printf("You word hard.");
+	} break;
+	case Race::Teklan: {
+		printf("You are very strong.");
+	} break;
+	case Race::Ivyn: {
+		printf("You are a great reader.");
+	} break;
+	case Race::Moiran: {
+		printf("My, how versatile you are!");
+	} break;
+	case Race::Camite: {
+		printf("You're incredibly helpful.");
+	} break;
+	case Race::Julian: {
+		printf("Anything you want!");
+	} break;
+	case Race::Aidan: {
+		printf("What an enigma.");
+	} break;
+	default: {
+		printf("Error: unknown race.");
+	}
+	}
+
+	// plain old data types (PODs):
+	struct Book {
+		char name[256];
+		int year;
+		int pages;
+		bool hardcover;
+	};
+
+	Book neuromancer;
+	neuromancer.pages = 271;
+	neuromancer.year = 1971;
+	printf("Neuromancer was written in %d, and contains %d pages.\n", neuromancer.year, neuromancer.pages);
+
+	//unions: like PODs but different
+	union Variant {
+		char string[10];
+		int integer;
+		double floating_point;
+	};
+
+	//fully featured C++ Classes
+	struct ClockOfTheLongNow {
+		void add_year() {
+			year++;
+		}
+		int add_years(int valToAdd) {
+			return year + valToAdd;
+		}
+		int year;
+	};
+
+	ClockOfTheLongNow clock;
+	clock.year = 2017;
+	clock.add_year();
+	printf("Year: %d\n", clock.year);
+	clock.year = clock.add_years(20);
+	printf("Year: %d\n", clock.year);
+
 }
