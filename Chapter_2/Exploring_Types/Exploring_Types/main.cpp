@@ -1,5 +1,6 @@
 #include <cstdio>
 #include <cstddef>
+#include <cstdint>
 
 int main() {
 
@@ -173,6 +174,16 @@ int main() {
 */
 	//Access controls
 	struct ClockOfTheLongNow {
+		//constructors:
+		ClockOfTheLongNow() {
+			year = 2019;
+		}
+		ClockOfTheLongNow(int year_in) {
+			if (!set_year(year_in)) {
+				year = 2019;
+
+			}
+		}
 		void add_year() {
 			year++;
 		}
@@ -194,5 +205,61 @@ int main() {
 	}
 	clock.add_year();
 	printf("Year: %d\n", clock.get_year());
+
+	//initializing:
+	// the following all initialize an integer to zero
+	// however, the last option should be avoided since its behavior is not predictable.
+	int int_a = 0;
+	int int_b{}; //braced initialization
+	int int_c = {}; //braced initialization
+	int int_d;
+	//initialize to a value other than zero:
+	int int_a2 = 42;
+	int int_b2{ 42 }; //braced initialization
+	int c2 = { 42 }; //braced initialization
+	int d2 = (42);
+
+	//initializing PODs
+	struct PodStruct {
+		uint64_t aNum;
+		char b[256];
+		bool c;
+	};
+
+	PodStruct initialized_pod1{}; // all fields set to 0
+	PodStruct initialized_pod2 = {}; // all fields set to 0
+
+	PodStruct initialized_pod3{ 42, "Hello" }; // fields a & b set, c = 0
+	PodStruct initialized_pod4{ 42, "Hello", true }; // all fields set
+
+	// initializing arrays
+	int array_1[]{ 1,2,3};
+	int array_2[5]{};
+	int array_3[5]{ 1,2,3 };
+	int array_4[5];
+
+	struct Taxonomist {
+		Taxonomist() {
+			printf("(no argument)\n");
+		}
+		Taxonomist(char x) {
+			printf("char: %c\n", x);
+		}
+		Taxonomist(int x) {
+			printf("int: %d\n", x);
+		}
+		Taxonomist(float x) {
+			printf("float: %f\n", x);
+		}
+	};
+
+	Taxonomist t1;
+	Taxonomist t2{ 'c' };
+	Taxonomist t3{ 65537 };
+	Taxonomist t4{ 6.02e23f };
+	Taxonomist t5{ 'g' };
+	Taxonomist t6{ 'l' };
+	Taxonomist t7{};
+	//Taxonomist t8(); This line results in unusual behavior
 
 }
