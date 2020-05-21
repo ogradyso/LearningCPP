@@ -29,6 +29,10 @@ void print_names(College* colleges, size_t n_colleges) {
 	}
 }
 
+void add_year(ClockOfTheLongNow& clock) {
+	clock.set_year(clock.get_year() + 1); // no dereference operatore needed
+}
+
 int main() {
 	//pointers
 	// pointers encode an objects type and its address
@@ -92,6 +96,17 @@ int main() {
 	// never add an element beyond an arrays' last index!!
 
 
-	//connection between brackets and pointer arithmetic
+	//void pointers and std::byte pointers
+	// void pointers (void*) can be used when the pointed to object is irrelevant
+	//void pointers cannot use pointer arithmetic
+
+	//null ptr and boolean expressions
+
+	//references
+	//safer than pointers because they cannot be set to null and cannot be reassigned
+	ClockOfTheLongNow clock2;
+	printf("The year is %d.\n", clock2.get_year());
+	add_year(clock2); // clock is implicitly passed by reference
+	printf("The year is %d.\n", clock2.get_year());
 
 }
