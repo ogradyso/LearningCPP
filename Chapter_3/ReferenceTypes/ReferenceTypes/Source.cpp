@@ -19,6 +19,16 @@ private:
 	int year;
 };
 
+struct College {
+	char name[256];
+};
+
+void print_names(College* colleges, size_t n_colleges) {
+	for (size_t i = 0; i < n_colleges; i++) {
+		printf("%s College\n", colleges[i].name);
+	}
+}
+
 int main() {
 	//pointers
 	// pointers encode an objects type and its address
@@ -47,4 +57,15 @@ int main() {
 	printf("Address of clock: %p\n", clock_ptr);
 	printf("Value of clock's year: %d\n", clock_ptr->get_year());
 
+	// pointers and arrays
+	//pointers encode object locations
+	// arrays encode the location and length of contiguous objects
+	// arrays can become decay into a pointer pointing to the location of the first object in the array
+	int key_to_the_universe[]{3,6,9};
+	int* key_ptr = key_to_the_universe;  // points to 3
+
+	//College best_colleges[] = { "Magdalen","Nuffield", "Kellogg" };
+	//print_name(best_colleges);
+	College oxford[] = { "Magdalen", "Nuffield", "Kellog" };
+	print_names(oxford, sizeof(oxford) / sizeof(College));
 }
