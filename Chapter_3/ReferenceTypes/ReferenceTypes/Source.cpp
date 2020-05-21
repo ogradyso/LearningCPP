@@ -68,4 +68,30 @@ int main() {
 	//print_name(best_colleges);
 	College oxford[] = { "Magdalen", "Nuffield", "Kellog" };
 	print_names(oxford, sizeof(oxford) / sizeof(College));
+
+	//pointer arithmetic
+	//address of the nth element of an array can be obtained in two ways:
+	College* third_college_ptr = &oxford[2];
+	printf("Address of the 3rd element in oxford array: %p\n", third_college_ptr);
+	//or by pointer arithmetic:
+	College* thrid_college_ptr = oxford + 2;
+	printf("Address of the 3rd element in oxford array: %p\n", third_college_ptr);
+
+	//the danger of arrays: buffer overflow
+	char lower[] = "abc?e";
+	char upper[] = "ABC?E";
+	char* upper_ptr = upper;
+
+	lower[3] = 'd';
+	upper[3] = 'D';
+
+	char letter_d = lower[3];
+	char letter_D = upper_ptr[3];
+
+	printf("lower: %s\nupper: %s\n", lower, upper);
+	// never add an element beyond an arrays' last index!!
+
+
+	//connection between brackets and pointer arithmetic
+
 }
