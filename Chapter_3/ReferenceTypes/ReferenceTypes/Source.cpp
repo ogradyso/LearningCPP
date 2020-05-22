@@ -228,4 +228,29 @@ int main() {
 	raz.announce();
 	jad.announce();
 
+	//auto type deduction
+	int answer = 42;
+	auto the_anser{ 42 }; // int
+	auto foot{ 12L };//long
+	auto rootbeer{ 5.0F }; //float
+	auto cheeseburger{ 10.0 }; //double
+	auto politifact_claims{ false }; //bool
+	auto cheese{ "String" }; //char[7]
+
+	auto another_answer = 42;
+	auto another_foot(12L);
+
+	//auto and reference types
+	//&:reference
+	//*:pointer
+	//const:const
+	auto year{ 2019 };	//int
+	auto& year_ref = year; //int&
+	const auto& year_cref = year; //const int&
+	auto* year_ptr = &year;  //int*
+	const auto* year_cptr = &year; // const int*
+
+	// auto and code refactorings
+	// using auto on structs will allow you to change the struct without changing the code that touches it.
+
  }
