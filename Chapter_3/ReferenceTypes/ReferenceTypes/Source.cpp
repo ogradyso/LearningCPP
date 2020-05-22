@@ -12,7 +12,8 @@ struct ClockOfTheLongNow {
 		year = new_year;
 		return true;
 	}
-	int get_year() {
+	// methods can be constant as long as they do not alter an object's members
+	int get_year() const {
 		return year;
 	}
 private:
@@ -31,6 +32,14 @@ void print_names(College* colleges, size_t n_colleges) {
 
 void add_year(ClockOfTheLongNow& clock) {
 	clock.set_year(clock.get_year() + 1); // no dereference operatore needed
+}
+
+//if an object is a const, it can only invoke methods that are const:
+bool is_leap_year(const ClockOfTheLongNow& clock) {
+	if (clock.get_year() % 4 > 0) return false;
+	if (clock.get_year() % 100 > 0) return true;
+	if (clock.get_year() % 400 > 0) return false;
+	return true;
 }
 
 //forward linked lists
@@ -85,7 +94,7 @@ int main() {
 	ClockOfTheLongNow clock;
 	ClockOfTheLongNow* clock_ptr = &clock; // set clock_ptr to the address of the clock object
 	clock_ptr->set_year(2020);
-	printf("Clock's year member: %d\n", clock_ptr ->get_year());
+	printf("Clock's year member: %d\n", clock_ptr->get_year());
 	printf("Address of clock: %p\n", clock_ptr);
 	printf("Value of clock's year: %d\n", clock_ptr->get_year());
 
@@ -93,7 +102,7 @@ int main() {
 	//pointers encode object locations
 	// arrays encode the location and length of contiguous objects
 	// arrays can become decay into a pointer pointing to the location of the first object in the array
-	int key_to_the_universe[]{3,6,9};
+	int key_to_the_universe[]{ 3,6,9 };
 	int* key_ptr = key_to_the_universe;  // points to 3
 
 	//College best_colleges[] = { "Magdalen","Nuffield", "Kellogg" };
@@ -171,6 +180,13 @@ int main() {
 	printf("new_value: %d\n", new_value);
 	printf("original_ref: %d\n", original_ref);
 
-	//constants
+	//constant methods
+	ClockOfTheLongNow new_clock;
+	ClockOfTheLongNow* new_clock_ptr = &new_clock;
+	if (is_leap_year(new_clock)) printf("Leap year.\n");
+	else printf("Not a leap year.\n");
+	new_clock_ptr->set_year(2020);
+	if (is_leap_year(new_clock)) printf("Leap year.\n");
+	else printf("Not a leap year.\n");
 
-}
+ }
