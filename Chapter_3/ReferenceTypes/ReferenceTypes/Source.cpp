@@ -34,17 +34,33 @@ void add_year(ClockOfTheLongNow& clock) {
 }
 
 //forward linked lists
+//struct Element {
+//	Element* next{};
+//	void insert_after(Element* new_element) {
+//		new_element->next = next;
+//		next = new_element;
+//	}
+//	char prefix[2];
+//	short operating_number;
+//
+//};
+
+//replaces about struct using 'this' keyword
 struct Element {
 	Element* next{};
 	void insert_after(Element* new_element) {
-		new_element->next = next;
-		next = new_element;
+		new_element->next = this->next;
+		this->next = new_element;
 	}
 	char prefix[2];
 	short operating_number;
-
 };
 
+
+//constants as arguments
+void petruchio(const char* shrew) {
+	printf("Fear not, sweet wench, they shall not touch thee, %s. \n", shrew);
+}
 int main() {
 	//pointers
 	// pointers encode an objects type and its address
@@ -154,5 +170,8 @@ int main() {
 	printf("Original: %d\n", original);
 	printf("new_value: %d\n", new_value);
 	printf("original_ref: %d\n", original_ref);
+
+	//constants
+
 
 }
