@@ -4,6 +4,11 @@ struct ClockOfTheLongNow {
 	ClockOfTheLongNow() {
 		year = 2019;
 	}
+	ClockOfTheLongNow(int year_in) {
+		if (!set_year(year_in)) {
+			year = 2019;
+		}
+	}
 	void add_year() {
 		year++;
 	}
@@ -24,6 +29,24 @@ struct College {
 	char name[256];
 };
 
+//for showing the relation between const and non-const members:
+//struct Avout {
+//	const char* name = "Erasmus";
+//	ClockOfTheLongNow apert;
+//};
+
+//member initializer lists are used to set a constant member during constructor/initialization:
+struct Avout {
+	Avout(const char* name, long year_of_apert)
+		: name { name }, apert { year_of_apert } { //member initializer list
+	}
+	void announce() const {
+		printf("My name is %s and my next apert is %d.\n", name, apert.get_year());
+	}
+	const char* name;
+	ClockOfTheLongNow apert;
+};
+
 void print_names(College* colleges, size_t n_colleges) {
 	for (size_t i = 0; i < n_colleges; i++) {
 		printf("%s College\n", colleges[i].name);
@@ -33,6 +56,14 @@ void print_names(College* colleges, size_t n_colleges) {
 void add_year(ClockOfTheLongNow& clock) {
 	clock.set_year(clock.get_year() + 1); // no dereference operatore needed
 }
+
+//void does_not_compile(const Avout& avout) {
+	//	avout.apert.add_year(); //compile error becuase the object is constant
+	//}
+
+void does_compile(Avout& avout) {
+	avout.apert.add_year(); //does compile
+};
 
 //if an object is a const, it can only invoke methods that are const:
 bool is_leap_year(const ClockOfTheLongNow& clock) {
@@ -188,5 +219,13 @@ int main() {
 	new_clock_ptr->set_year(2020);
 	if (is_leap_year(new_clock)) printf("Leap year.\n");
 	else printf("Not a leap year.\n");
+
+	//constant  members:
+	
+	//member initialization lists:
+	Avout raz{ "Erasmus", 3010 };
+	Avout jad{ "Jad", 4000 };
+	raz.announce();
+	jad.announce();
 
  }
