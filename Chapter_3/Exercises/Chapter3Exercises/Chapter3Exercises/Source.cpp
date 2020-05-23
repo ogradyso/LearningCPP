@@ -93,7 +93,6 @@ int main() {
 	printf("New Value: %d\n", new_value);
 	printf("Reference: %d\n", original_ref);
 
-	//Exercise 5
 
 
 }
