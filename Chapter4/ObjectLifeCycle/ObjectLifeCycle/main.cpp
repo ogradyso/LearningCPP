@@ -62,6 +62,13 @@ struct SimpleString {
 		buffer = new char[max_size];
 		buffer[0] = 0;
 	}
+	// copy constructor:
+	SimpleString(const SimpleString& other)
+		: max_size{ other.max_size },
+		buffer{ new char[other.max_size] },
+		length{ other.length } {
+	std::strncpy(buffer, other.buffer, max_size);
+}
 	~SimpleString() {
 		delete[] buffer;
 	}
@@ -120,6 +127,64 @@ void fn_c() {
 void fn_b() {
 	SimpleStringOwner b{ "b" };
 	fn_c();
+}
+
+//Alternatives to exceptions:
+//ensure class invariants:
+struct HumptyDumpty {
+	HumptyDumpty() {
+
+	}
+	bool is_together_again() {
+		return false;
+	}
+
+};
+
+//bool send_kings_horses_and_men() {
+//	HumptyDumpty hd{};
+//	if (hd.is_together_again()) return false;
+//	//class invariants of hd are now guaranteed
+//	//Humpty dubmpty had a great fall
+//	return true;
+//}
+
+//structured binding declarations:
+struct Result {
+	HumptyDumpty hd;
+	bool success;
+};
+
+Result make_humpty() {
+	HumptyDumpty hd{};
+	bool is_valid = true;
+	//check that hd is valid and set is_valid appropriately
+	return { hd, is_valid };
+}
+
+bool send_kings_horses_and_men() {
+	auto [hd, success] = make_humpty();
+	if (!success) return false;
+	//class invariants established
+	return true;
+}
+
+//copy semantics
+int add_one_to(int x) {
+	x++;
+	return x;
+}
+
+//copy semantics with objects
+struct Point {
+	int x, y;
+};
+
+Point make_transpose(Point p) {
+	int tmp = p.x;
+	p.x = p.y;
+	p.y = tmp;
+	return p;
 }
 
 
@@ -248,5 +313,24 @@ int main() {
 	catch (const std::exception & e) {
 		printf("Exception %s\n", e.what());
 	}
+
+	//alternatives to exceptions
+	//manually enforce class invariants by exposing a method that commicates whether the class invariants could be established
+	//structured binding declaration: return multiple values from a function call
+
+
+	//Copy semantics:
+	//'equivalent and independent'
+	auto original = 1;
+	auto result = add_one_to(original); //add_one_to method gets a copy of original
+	printf("Original: %d; Results: %d\n", original, result);
+	//works the same with objects: members are copied member-wise from original:
+	Point myPoint{ 3,4 };
+	Point anotherPoint = make_transpose(myPoint);
+	printf("anotherPoint x: %d; anotherPoint y: % d\n", anotherPoint.x, anotherPoint.y);
+
+	//Copy constructors:
+	SimpleString a{25};
+	SimpleString a_copy{ a };
 
 }
