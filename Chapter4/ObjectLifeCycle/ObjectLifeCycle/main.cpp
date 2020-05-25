@@ -96,6 +96,33 @@ struct Groucho {
 	}
 };
 
+//Composing a SimpleString
+struct SimpleStringOwner {
+	SimpleStringOwner(const char* x)
+	: string{ 10 } {
+		if (!string.append_line(x)) {
+			throw std::runtime_error{ "not enough money!" };
+		}
+		string.print("Constructed: ");
+	}
+	~SimpleStringOwner() {
+		string.print("about to destroy: ");
+	}
+private: 
+	SimpleString string;
+};
+
+//call stack unwinding
+void fn_c() {
+	SimpleStringOwner c{ "ccccccccc" };
+}
+
+void fn_b() {
+	SimpleStringOwner b{ "b" };
+	fn_c();
+}
+
+
 int main() {
 	//The object life cycle
 
@@ -195,6 +222,7 @@ int main() {
 
 	//putting it all together, constructors, destructors, members, and exceptions
 	SimpleString string{ 115 };
+
 	string.append_line( "Starbuck, whaddya hear?" );
 	string.append_line( "Nothing' but the rain." );
 	string.print("A: ");
@@ -205,5 +233,20 @@ int main() {
 		printf("String was not big enough to append another message.");
 	}
 
+	//Composing a SImpleString
+	// members are constructed before it owner
+	//members are  after it's owner
+	SimpleStringOwner x{ "x" };
+	printf("x is alive\n");
+
+	//call stack unwinding
+	try {
+		SimpleStringOwner a{ "a" };
+		fn_b();
+		SimpleStringOwner d{ "d" };
+	}
+	catch (const std::exception & e) {
+		printf("Exception %s\n", e.what());
+	}
 
 }
