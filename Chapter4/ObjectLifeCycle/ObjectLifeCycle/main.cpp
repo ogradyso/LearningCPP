@@ -62,15 +62,45 @@ struct SimpleString {
 		buffer = new char[max_size];
 		buffer[0] = 0;
 	}
+	~SimpleString() {
+		delete[] buffer;
+	}
 	// copy constructor:
 	SimpleString(const SimpleString& other)
 		: max_size{ other.max_size },
 		buffer{ new char[other.max_size] },
 		length{ other.length } {
-	std::strncpy(buffer, other.buffer, max_size);
-}
-	~SimpleString() {
+		std::strncpy(buffer, other.buffer, max_size);
+	}
+	SimpleString(SimpleString&& other) noexcept
+		: max_size{other.max_size},
+		buffer{ new char[other.max_size] },
+		length{ other.length } {
+		other.length = 0;
+		other.buffer = nullptr;
+		other.max_size = 0;
+	}
+	//copy assignment operator
+	SimpleString& operator=(const SimpleString& other) {
+		if (this == &other) return *this;
+		const auto new_buffer = new char[other.max_size];
+		delete buffer;
+		buffer = new_buffer;
+		length = other.length;
+		max_size = other.max_size;
+		strcpy_s(buffer, max_size, other.buffer);
+		return *this;
+	}
+	SimpleString& operator=(SimpleString&& other) noexcept {
+		if (this == &other) return *this;
 		delete[] buffer;
+		buffer = other.buffer;
+		length = other.length;
+		max_size = other.max_size;
+		other.buffer = nullptr;
+		other.length = 0;
+		other.max_size = 0;
+		return *this;
 	}
 
 	void print(const char* tag) const {
@@ -187,6 +217,26 @@ Point make_transpose(Point p) {
 	return p;
 }
 
+//default copy
+struct Replicant {
+	Replicant(const Replicant&) = default;
+	Replicant& operator=(const Replicant&) = default;
+};
+//use 'delete' keyword to prevent a class object from being copied
+struct Highlander {
+	Highlander(const Highlander&) = delete;
+	Highlander& operator=(const Highlander&) = delete;
+};
+
+//move semantics
+//value categories
+void ref_type(int &xval) {
+	printf("lvalue reference %d\n.", xval);
+}
+
+void ref_type(int &&xval) {
+	printf("rvalue reference %d\n.", xval);
+}
 
 int main() {
 	//The object life cycle
@@ -330,7 +380,33 @@ int main() {
 	printf("anotherPoint x: %d; anotherPoint y: % d\n", anotherPoint.x, anotherPoint.y);
 
 	//Copy constructors:
-	SimpleString a{25};
-	SimpleString a_copy{ a };
+	//SimpleString a{25};
+	//SimpleString a_copy{ a };
+
+	//copy assignment:
+	SimpleString a{ 50 };
+	a.append_line("We apologize for the");
+	SimpleString b{ 50 };
+	b.append_line("Last message");
+	a.print("a");
+	b.print("b");
+	b = a;
+	a.print("a");
+	b.print("b");
+
+	//default copy:
+	//default copy constructors and copy assignment may have issues
+	//best practice is to create user defined copy constructors and copy assignment operators
+	// you can use keyword 'default' to explicitly declare that default copy construction and 
+	//assignment are okay.
+
+	//move semantics
+	//value categories
+	auto xval = 1;
+	ref_type(xval);
+	ref_type(2);
+	ref_type(xval + 2);
+	//std::move function casts a lvalue to rvalue
+	ref_type(std::move(xval));
 
 }
