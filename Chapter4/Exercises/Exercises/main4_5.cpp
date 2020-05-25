@@ -5,7 +5,8 @@
 
 
 struct TimerClass {
-	TimerClass() {
+	TimerClass(const char* myName)
+		: name{ myName } {
 		time_t timestamp;
 		timestamp = time(NULL);
 		//printf("Seconds since January 1, 1970 = %lld\n", ((((timestamp/60)/60)/24)/365));
@@ -31,24 +32,30 @@ struct TimerClass {
 		if (this == &other) return *this;
 		timestamp = 0;
 		timestamp = other.timestamp;
+		other.timestamp = 0;
 		return *this;
 	}
 	~TimerClass() {
-		time_t timeOfDeath = time(0);
-		//printf("Seconds since January 1, 1970 = %lld\n", timeOfDeath);
-		long long ageOfObject = difftime(timeOfDeath, timestamp);
-		printf("The object was alive for %lld secs.", (long long)ageOfObject);
+		if (timestamp == 0) {
+			printf("%s has been moved. No age data available.", name);
+		}
+		else {
+			time_t timeOfDeath = time(0);
+			//printf("Seconds since January 1, 1970 = %lld\n", timeOfDeath);
+			long long ageOfObject = difftime(timeOfDeath, timestamp);
+			printf("%s was alive for %lld secs.\n", name, (long long)ageOfObject);
+		}
 	}
 private:
 	time_t timestamp;
+	const char* name;
 };
 
-//int main() {
-//	TimerClass myTimer;
-//	TimerClass mySecondTimer;
-//
-//	mySecondTimer = std::move(myTimer);
-//
-//
-//
-//}
+int main() {
+	TimerClass myTimer("a");
+	TimerClass mySecondTimer("b");
+
+	mySecondTimer = std::move(myTimer);
+	return 0;
+
+}
