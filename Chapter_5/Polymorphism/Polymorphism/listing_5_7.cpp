@@ -12,13 +12,13 @@ struct DerivedClass : BaseClass {
 	}
 };
 
-int main() {
-	BaseClass base;
-	DerivedClass derived;
-	BaseClass& ref = derived;
-	printf("BaseClass:    %s\n", base.final_message());
-	printf("DerivedClass:    %s\n", derived.final_message());
-	printf("BaseClass&:    %s\n", ref.final_message());
-
-
-}
+//int main() {
+//	BaseClass base;
+//	DerivedClass derived;
+//	BaseClass& ref = derived;
+//	printf("BaseClass:    %s\n", base.final_message());
+//	printf("DerivedClass:    %s\n", derived.final_message());
+//	printf("BaseClass&:    %s\n", ref.final_message());
+//
+//
+//}
