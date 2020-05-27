@@ -13,9 +13,9 @@ struct DerivedClass : BaseClass {
 	}
 };
 
-int main() {
-	printf("Constructing DerivedClass x. \n");
-	BaseClass* x{ new DerivedClass{} };
-	printf("Deleting x as a BaseClass*.\n");
-	delete x;
-}
+//int main() {
+//	printf("Constructing DerivedClass x. \n");
+//	BaseClass* x{ new DerivedClass{} };
+//	printf("Deleting x as a BaseClass*.\n");
+//	delete x;
+//}
