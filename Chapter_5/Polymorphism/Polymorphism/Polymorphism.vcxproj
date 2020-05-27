@@ -141,6 +141,9 @@
     <ClCompile Include="listing_5_1.cpp" />
     <ClCompile Include="listing_5_3.cpp" />
     <ClCompile Include="listing_5_4.cpp" />
+    <ClCompile Include="listing_5_5.cpp" />
+    <ClCompile Include="listing_5_6.cpp" />
+    <ClCompile Include="listing_5_7.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="listing_5_2.cpp" />
   </ItemGroup>
