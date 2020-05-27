@@ -42,10 +42,10 @@
     <ClCompile Include="listing_5_8.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="listing_5_10.cpp">
+    <ClCompile Include="listing_5_12.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="listing_5_12.cpp">
+    <ClCompile Include="listing_5_13.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

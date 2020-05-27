@@ -17,20 +17,24 @@ struct FileLogger : Logger {
 	}
 };
 
-
-//constructor injection:
+//property injection
 struct Bank {
-	Bank(Logger& logger) : logger{ logger } {}
+	void set_logger(Logger* new_logger) {
+		logger = new_logger;
+	}
 	void make_transfer(long from, long to, double amount) {
-		logger.log_transfer(from, to, amount);
+		if (logger) logger->log_transfer(from, to, amount);
 	}
 private:
-	Logger& logger;
+	Logger* logger{};
 };
 
-//int main() {
-//	ConsoleLogger logger;
-//	Bank bank{ logger };
-//	bank.make_transfer(1000, 2000, 49.95);
-//	bank.make_transfer(2000, 4000, 20.00);
-//}
+int main() {
+	ConsoleLogger console_logger;
+	FileLogger file_logger;
+	Bank bank;
+	bank.set_logger(&console_logger);
+	bank.make_transfer(1000, 2000, 49.95);
+	bank.set_logger(&file_logger);
+	bank.make_transfer(2000, 4000, 20.00);
+}
