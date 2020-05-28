@@ -6,9 +6,13 @@ struct Logger {
 };
 
 struct ConsoleLogger : Logger {
-	void log_transfer(long from, long to, double amount) override {
-		printf("[cons] %ld -> %ld: %f\n", from, to, amount);
+	ConsoleLogger(const char* prefix) {
+		name = prefix;
 	}
+	void log_transfer(long from, long to, double amount) override {
+		printf("[%s] %ld -> %ld: %f\n", this->name, from, to, amount);
+	}
+	const char* name;
 };
 
 struct FileLogger : Logger {
@@ -22,7 +26,7 @@ struct FileLogger : Logger {
 struct AccountDatabase {
 	void set_amount(double valToAdd) {
 		amount = amount + valToAdd;
-		printf("Updated accound %ld with %f", id, amount);
+		printf("Updated account %ld, remaining balance: %f", id, amount);
 	}
 	double retrieve_balance(long id) {
 		printf("Acount balance for %ld: %f", id, amount);
@@ -32,30 +36,34 @@ struct AccountDatabase {
 };
 
 struct inMemoryAccountDatabase : AccountDatabase {
-	inMemoryAccountDatabase(long newId, double startBalance) : id{ newId }, amount{ startBalance } {
+	inMemoryAccountDatabase(long newId, double startBalance) {
+		id = newId;
+		amount = startBalance;
 	}
 };
 
 //property injection
 struct Bank {
+	Bank(AccountDatabase& accounts) : accountsDB{ accounts } { }
 	void set_logger(Logger* new_logger) {
 		logger = new_logger;
 	}
 	void make_transfer(long from, long to, double amount) {
 		if (logger) logger->log_transfer(from, to, amount);
 	}
+	AccountDatabase& accountsDB;
 private:
 	Logger* logger{};
 };
 
 int main() {
-	ConsoleLogger console_logger;
+	ConsoleLogger console_logger{"MyLog"};
 	FileLogger file_logger;
-	Bank bank;
+	inMemoryAccountDatabase account1{ 1000, 5.00 };
+	Bank bank{account1};
 	bank.set_logger(&console_logger);
 	bank.make_transfer(1000, 2000, 49.95);
 	bank.set_logger(&file_logger);
 	bank.make_transfer(2000, 4000, 20.00);
-	inMemoryAccountDatabase account1{ 1000, 5.00 };
-	account1.set_amount(10.00);
+	bank.accountsDB.set_amount(10.00);
 }
