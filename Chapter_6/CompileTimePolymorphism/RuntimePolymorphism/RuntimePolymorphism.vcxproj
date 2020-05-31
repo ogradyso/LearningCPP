@@ -144,6 +144,8 @@
     <ClCompile Include="listing_6_13.cpp" />
     <ClCompile Include="listing_6_14.cpp" />
     <ClCompile Include="listing_6_15.cpp" />
+    <ClCompile Include="listing_6_16.cpp" />
+    <ClCompile Include="listing_6_18.cpp" />
     <ClCompile Include="listing_6_2.cpp" />
     <ClCompile Include="listing_6_3.cpp" />
     <ClCompile Include="listing_6_4.cpp" />
