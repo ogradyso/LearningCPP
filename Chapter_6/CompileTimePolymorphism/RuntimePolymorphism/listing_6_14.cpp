@@ -1,4 +1,4 @@
-template <typename>
+template <typename T>
 struct SimpleUniquePointer {
 	SimpleUniquePointer() = default;
 	SimpleUniquePointer(T* pointer)
@@ -9,7 +9,7 @@ struct SimpleUniquePointer {
 	}
 	SimpleUniquePointer(const SimpleUniquePointer&) = delete;
 	SimpleUniquePointer& operator=(const SimpleUniquePointer&) = delete;
-	SimpleUniquePointer(SimpleUniquePointer&& other) no except
+	SimpleUniquePointer(SimpleUniquePointer&& other) noexcept
 		: pointer{ other.pointer } {
 		other.pointer = nullptr;
 	}

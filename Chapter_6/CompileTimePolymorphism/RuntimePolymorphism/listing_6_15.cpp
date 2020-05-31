@@ -47,6 +47,6 @@ void consumer(SimpleUniquePointer<Tracer> consumer_ptr) {
 //int main() {
 //	auto ptr_a = SimpleUniquePointer(new Tracer{ "ptr_a" });
 //	printf("(main) ptr_a: 0x%p\n", ptr_a.get());
-//	consumer(std::move(ptr_a));
+//	//consumer(std::move(ptr_a));
 //	printf("(main) ptr_a: 0x%p\n", ptr_a.get());
 //}

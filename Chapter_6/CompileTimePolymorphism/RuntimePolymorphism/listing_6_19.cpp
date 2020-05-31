@@ -4,5 +4,5 @@ T mean(T* values, size_t length) {
 	for (size_t i{}; i < length; i++) {
 		result += values[i];
 	}
-	retrun result / length;
+	return result / length;
 }
