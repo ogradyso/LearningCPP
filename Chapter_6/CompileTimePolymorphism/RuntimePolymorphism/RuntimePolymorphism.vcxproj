@@ -153,6 +153,9 @@
     <ClCompile Include="listing_6_21.cpp" />
     <ClCompile Include="listing_6_25.cpp" />
     <ClCompile Include="listing_6_26.cpp" />
+    <ClCompile Include="listing_6_27.cpp" />
+    <ClCompile Include="listing_6_28.cpp" />
+    <ClCompile Include="listing_6_29.cpp" />
     <ClCompile Include="listing_6_3.cpp" />
     <ClCompile Include="listing_6_4.cpp" />
     <ClCompile Include="listing_6_6.cpp" />
