@@ -13,14 +13,13 @@ struct CheckedInteger {
 	const unsigned int value;
 };
 
-int main() {
-	CheckedInteger a{ 100 };
-	auto b = a + 200;
-	printf("a + 200 = %u\n", b.value);
-	try {
-		auto c = a + std::numeric_limits<unsigned int>::max();
-	}
-	catch (const std::overflow_error& e) {
-		printf("(a + max) Exception: %s\n", e.what());
-	}
-}
+//int main() {
+//	CheckedInteger a{ 100 };
+//	auto b = a + 200;
+//	printf("a + 200 = %u\n", b.value);
+//	try {
+//		auto c = a + std::numeric_limits<unsigned int>::max();
+//	} catch(const std::overflow_error& e) {
+//		printf("(a + max) Exception: %s\n", e.what());
+//	}
+//}
