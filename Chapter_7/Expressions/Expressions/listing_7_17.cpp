@@ -53,11 +53,11 @@ constexpr Color rgb_to_hsv(uint8_t r, uint8_t g, uint8_t b) {
 	return c;
 }
 
-int main() {
-	auto black = rgb_to_hsv(0, 0, 0);
-	auto white = rgb_to_hsv(255, 255, 255);
-	auto red = rgb_to_hsv(255, 0, 0);
-	auto green = rgb_to_hsv(0, 255, 0);
-	auto blue = rgb_to_hsv(0, 0, 255);
-	// TODO: print these , output.
-}
+//int main() {
+//	auto black = rgb_to_hsv(0, 0, 0);
+//	auto white = rgb_to_hsv(255, 255, 255);
+//	auto red = rgb_to_hsv(255, 0, 0);
+//	auto green = rgb_to_hsv(0, 255, 0);
+//	auto blue = rgb_to_hsv(0, 0, 255);
+//	// TODO: print these , output.
+//}
