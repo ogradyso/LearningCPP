@@ -15,8 +15,8 @@ constexpr const char* sign(const T& x) {
 	return result;
 }
 
-int main() {
-	printf("float 100 is %s\n", sign(100.0f));
-	printf("int -200 is %s \n", sign(-200));
-	printf("char 0 is %s\n", sign(char{}));
-}
+//int main() {
+//	printf("float 100 is %s\n", sign(100.0f));
+//	printf("int -200 is %s \n", sign(-200));
+//	printf("char 0 is %s\n", sign(char{}));
+//}
