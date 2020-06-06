@@ -9,9 +9,10 @@ namespace BroopKidron13::Shaltanac {
 }
 
 //int main() {
-//	const auto shaltanac_grass{ BroopKidron13::Shaltanac::Color::Russet };
-//	if (shaltanac_grass == BroopKidron13::Shaltanac::Color::Russet) {
+//	using BroopKidron13::Shaltanac::Color;
+//	const auto shaltanac_grass = Color::Russet;
+//	if (shaltanac_grass == Color::Russet) {
 //		printf("The other Shaltanac's joopleberry shrub is always "
-//			"a more mauvey shade of pinky russet.");
+//			" a more mauvey shade of pinky russet.");
 //	}
 //}
