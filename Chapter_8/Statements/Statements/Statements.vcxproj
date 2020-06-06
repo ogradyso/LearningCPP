@@ -141,6 +141,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="listing_8_1.cpp" />
+    <ClCompile Include="listing_8_11.cpp" />
+    <ClCompile Include="listing_8_12.cpp" />
+    <ClCompile Include="listing_8_14.cpp" />
     <ClCompile Include="listing_8_2.cpp" />
     <ClCompile Include="listing_8_3.cpp" />
     <ClCompile Include="listing_8_4.cpp" />

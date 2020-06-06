@@ -14,12 +14,12 @@ struct NarrowCaster {
 template <typename From>
 using short_caster = NarrowCaster<short, From>;
 
-int main() {
-	try {
-		const short_caster<int> caster;
-		const auto cyclic_short = caster.cast(142857);
-		printf("cyclic_short: %d\n", cyclic_short);
-	} catch (const std::runtime_error& e) {
-		printf("Exception: %s\n", e.what());
-	}
-}
+//int main() {
+//	try {
+//		const short_caster<int> caster;
+//		const auto cyclic_short = caster.cast(142857);
+//		printf("cyclic_short: %d\n", cyclic_short);
+//	} catch (const std::runtime_error& e) {
+//		printf("Exception: %s\n", e.what());
+//	}
+//}

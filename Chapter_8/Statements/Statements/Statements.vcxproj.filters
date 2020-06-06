@@ -42,5 +42,14 @@
     <ClCompile Include="listing_8_9.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="listing_8_11.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="listing_8_12.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="listing_8_14.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
