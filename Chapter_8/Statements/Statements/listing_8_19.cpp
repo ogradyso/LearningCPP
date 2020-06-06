@@ -15,22 +15,22 @@ Result observe_shrub(const char* name) {
 	return Result{ name, Color::Russet };
 }
 
-int main() {
-	const char* description;
-	switch (const auto result = observe_shrub("Zaphod"); result.color) {
-	case Color::Mauve: {
-		description = "Mauvey shade of pinky russet";
-		break;
-	} case Color::Pink: {
-		description = "pinky shade of mauvey russet";
-		break;
-	} case Color::Russet: {
-		description = "Russety shade of pinky mauve";
-		break;
-	} default: {
-		description = "enigmatic shade of whitish black";
-	}
-	}
-	printf("THe other Shaltanac's joopleberry shrub is "
-		"always a more %s.", description);
-}
+//int main() {
+//	const char* description;
+//	switch (const auto result = observe_shrub("Zaphod"); result.color) {
+//	case Color::Mauve: {
+//		description = "Mauvey shade of pinky russet";
+//		break;
+//	} case Color::Pink: {
+//		description = "pinky shade of mauvey russet";
+//		break;
+//	} case Color::Russet: {
+//		description = "Russety shade of pinky mauve";
+//		break;
+//	} default: {
+//		description = "enigmatic shade of whitish black";
+//	}
+//	}
+//	printf("THe other Shaltanac's joopleberry shrub is "
+//		"always a more %s.", description);
+//}
