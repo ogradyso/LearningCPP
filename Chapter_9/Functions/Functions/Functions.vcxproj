@@ -88,6 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -140,8 +141,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="listing_9_1.cpp" />
+    <ClCompile Include="listing_9_10.cpp" />
+    <ClCompile Include="listing_9_12.cpp" />
+    <ClCompile Include="listing_9_13.cpp" />
     <ClCompile Include="listing_9_3.cpp" />
     <ClCompile Include="listing_9_4.cpp" />
+    <ClCompile Include="listing_9_5.cpp" />
+    <ClCompile Include="listing_9_8.cpp" />
+    <ClCompile Include="listing_9_9.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
