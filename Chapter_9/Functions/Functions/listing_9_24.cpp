@@ -18,12 +18,12 @@ struct LambdaFactory {
 	size_t tally;
 };
 
-int main() {
-	LambdaFactory factory{ 's' };
-	auto lambda = factory.make_lambda();
-	printf("Tally: %zd\n", factory.tally);
-	printf("Sally: %zd\n", lambda("Sally sells seashells by the seashore."));
-	printf("Tally: %zd\n", factory.tally);
-	printf("Sailor: %zd\n", lambda("Sailor went to sea to see what he could see."));
-	printf("Tally: %zd\n", factory.tally);
-}
+//int main() {
+//	LambdaFactory factory{ 's' };
+//	auto lambda = factory.make_lambda();
+//	printf("Tally: %zd\n", factory.tally);
+//	printf("Sally: %zd\n", lambda("Sally sells seashells by the seashore."));
+//	printf("Tally: %zd\n", factory.tally);
+//	printf("Sailor: %zd\n", lambda("Sailor went to sea to see what he could see."));
+//	printf("Tally: %zd\n", factory.tally);
+//}

@@ -150,7 +150,13 @@
     <ClCompile Include="listing_9_18.cpp" />
     <ClCompile Include="listing_9_19.cpp" />
     <ClCompile Include="listing_9_24.cpp" />
+    <ClCompile Include="listing_9_25.cpp" />
+    <ClCompile Include="listing_9_26.cpp" />
+    <ClCompile Include="listing_9_27.cpp" />
+    <ClCompile Include="listing_9_28.cpp" />
+    <ClCompile Include="listing_9_29.cpp" />
     <ClCompile Include="listing_9_3.cpp" />
+    <ClCompile Include="listing_9_33.cpp" />
     <ClCompile Include="listing_9_4.cpp" />
     <ClCompile Include="listing_9_5.cpp" />
     <ClCompile Include="listing_9_8.cpp" />
