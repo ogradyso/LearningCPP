@@ -18,5 +18,8 @@
     <ClCompile Include="Ex_9_1_foldFunction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Ex_9_2_commandLineHisto.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
