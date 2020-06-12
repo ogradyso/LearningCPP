@@ -1,6 +1,7 @@
 #pragma once
+#include <exception>
 struct SpeedUpdate {
-	double Velocity_mps;
+	double velocity_mps;
 };
 
 struct CarDetected {
@@ -14,10 +15,17 @@ struct BrakeCommand {
 
 template <typename T>
 struct AutoBrake {
-	AutoBrake(const T& publish) : publish{ publish } {}
-	void observe(const SpeedUpdate& cd) {};
+	AutoBrake(const T& publish)
+		: collision_threshold_s{ 5 },
+		speed_mps{ 0 },
+		publish{ publish } {}
+	void observe(const SpeedUpdate& x) {
+		speed_mps = x.velocity_mps;
+	};
 	void observe(const CarDetected& cd) {};
 	void set_collision_threshold_s(double x) {
+		if (x < 1) 
+			throw std::exception{ "Collision less than 1" };
 		collision_threshold_s = x;
 	}
 	double get_collision_threshold_s() const {
