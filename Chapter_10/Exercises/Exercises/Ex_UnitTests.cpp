@@ -43,3 +43,7 @@ BOOST_FIXTURE_TEST_CASE(AlertWhenIminent, AutoBrakeTest) {
 	BOOST_TEST(1 == bus.commands_published);
 	BOOST_TEST(1L == bus.last_command.time_to_collision_s);
 }
+
+BOOST_FIXTURE_TEST_CASE(InitialSpeedLimitIs39, AutoBrakeTest) {
+	BOOST_TEST(39 == auto_brake.get_speed_limit());
+}
