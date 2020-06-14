@@ -89,6 +89,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Program Files\boost_1_73_0</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,14 +142,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AutoBrake.cpp" />
+    <ClCompile Include="BoostUnitTests.cpp" />
     <ClCompile Include="listing_10_1.cpp" />
     <ClCompile Include="listing_10_2.cpp" />
+    <ClCompile Include="listing_10_29_simpleUnitTestFramework.cpp" />
     <ClCompile Include="listing_10_3.cpp" />
     <ClCompile Include="listing_10_5.cpp" />
     <ClCompile Include="UnitTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AutoBrake.h" />
+    <ClInclude Include="BoostAutoBrake.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

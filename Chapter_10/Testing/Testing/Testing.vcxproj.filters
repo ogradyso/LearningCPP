@@ -33,9 +33,18 @@
     <ClCompile Include="UnitTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="listing_10_29_simpleUnitTestFramework.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BoostUnitTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AutoBrake.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BoostAutoBrake.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
