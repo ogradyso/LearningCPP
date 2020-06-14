@@ -60,11 +60,17 @@ struct AutoBrake {
 		: collision_threshold_s{ 5 },
 		speed_mps{ 0 },
 		speed_limit{ 39 } {
-		bus.subscribe([this](const SpeedUpdate& update) {
+		bus.subscribe([this, &bus](const SpeedUpdate& update) {
 			speed_mps = update.velocity_mps;
+			if (speed_mps > speed_limit) {
+				bus.publish(BrakeCommand{ 0 });
+			}
 			});
-		bus.subscribe([this](const SpeedLimitDetected& update) {
+		bus.subscribe([this, &bus](const SpeedLimitDetected& update) {
 			speed_limit = update.speed_mps;
+			if (speed_mps > speed_limit) {
+				bus.publish(BrakeCommand{0});
+			}
 			});
 		bus.subscribe([this, &bus](const CarDetected& cd) {
 			const auto relative_velocity_mps = speed_mps - cd.velocity_mps;

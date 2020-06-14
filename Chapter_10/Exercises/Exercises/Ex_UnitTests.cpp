@@ -31,6 +31,7 @@ BOOST_FIXTURE_TEST_CASE(SpeedIsSaved, AutoBrakeTest) {
 
 BOOST_FIXTURE_TEST_CASE(NoAlertWhenNotIminent, AutoBrakeTest) {
 	auto_brake.set_collision_threshold_s(2L);
+	bus.speed_limit_callback(SpeedLimitDetected{ 100L });
 	bus.speed_update_callback(SpeedUpdate{ 100L });
 	bus.car_detected_callback(CarDetected{ 1000L,50L });
 	BOOST_TEST(0 == bus.commands_published);
@@ -38,6 +39,7 @@ BOOST_FIXTURE_TEST_CASE(NoAlertWhenNotIminent, AutoBrakeTest) {
 
 BOOST_FIXTURE_TEST_CASE(AlertWhenIminent, AutoBrakeTest) {
 	auto_brake.set_collision_threshold_s(10L);
+	bus.speed_limit_callback(SpeedLimitDetected{ 100L });
 	bus.speed_update_callback(SpeedUpdate{ 100L });
 	bus.car_detected_callback(CarDetected{ 100L,0L });
 	BOOST_TEST(1 == bus.commands_published);
@@ -61,4 +63,14 @@ BOOST_FIXTURE_TEST_CASE(NoBrakeWhenSpeedBelowLimit, AutoBrakeTest) {
 	bus.speed_limit_callback(SpeedLimitDetected{ 35L });
 	bus.speed_update_callback(SpeedUpdate{ 34L });
 	BOOST_TEST(0 == bus.commands_published);
+}
+
+BOOST_FIXTURE_TEST_CASE(BrakeWhenSpeedAboveLimit, AutoBrakeTest) {
+	bus.speed_limit_callback(SpeedLimitDetected{ 35L });
+	bus.speed_update_callback(SpeedUpdate{ 40L });
+	BOOST_TEST(1 == bus.commands_published);
+	//BOOST_TEST(1L == bus.last_command.time_to_collision_s);
+
+
+
 }
