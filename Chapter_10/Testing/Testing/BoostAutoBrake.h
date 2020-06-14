@@ -47,8 +47,8 @@ struct MockServiceBus : IServiceBus {
 
 struct AutoBrake {
 	AutoBrake(IServiceBus& bus)
-		: collision_threshold_s{ 5 }/*,
-		speed_mps{ 0 }*/ {
+		: collision_threshold_s{ 5 },
+		speed_mps{ 0 } {
 		bus.subscribe([this](const SpeedUpdate& update) {
 			speed_mps = update.velocity_mps;
 			});
