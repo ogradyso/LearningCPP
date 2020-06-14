@@ -47,3 +47,12 @@ BOOST_FIXTURE_TEST_CASE(AlertWhenIminent, AutoBrakeTest) {
 BOOST_FIXTURE_TEST_CASE(InitialSpeedLimitIs39, AutoBrakeTest) {
 	BOOST_TEST(39 == auto_brake.get_speed_limit());
 }
+
+BOOST_FIXTURE_TEST_CASE(ChangeSpeedLimit, AutoBrakeTest) {
+	bus.speed_limit_callback(SpeedLimitDetected{ 50L });
+	BOOST_TEST(50 == auto_brake.get_speed_limit());
+	bus.speed_limit_callback(SpeedLimitDetected{ 100L });
+	BOOST_TEST(100 == auto_brake.get_speed_limit());
+	bus.speed_limit_callback(SpeedLimitDetected{ 20L });
+	BOOST_TEST(20 == auto_brake.get_speed_limit());
+}
