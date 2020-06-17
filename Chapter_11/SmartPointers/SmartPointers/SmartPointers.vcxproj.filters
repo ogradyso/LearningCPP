@@ -26,5 +26,8 @@
     <ClCompile Include="listing_11_13_fileOperations.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="listing_11_18_allocators.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
