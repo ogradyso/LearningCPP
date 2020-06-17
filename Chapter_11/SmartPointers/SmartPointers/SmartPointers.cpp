@@ -2,6 +2,7 @@
 #include "catch.h"
 #include <boost/smart_ptr/scoped_ptr.hpp>
 #include <utility>
+#include <boost/smart_ptr/intrusive_ptr.hpp>
 
 struct DeadMenOfDunharrow {
 	DeadMenOfDunharrow(const char* m = "")
@@ -16,7 +17,7 @@ struct DeadMenOfDunharrow {
 };
 
 int DeadMenOfDunharrow::oaths_to_fulfill{};
-using ScopedOathbreakers = boost::scoped_ptr<DeadMenOfDunharrow>;
+using ScopedOathbreakers = boost::scoped_ptr<DeadMenOfDunharrow>; 
 
 TEST_CASE("ScopedPtr evaluates to") {
 	SECTION("true when full") {
@@ -129,8 +130,10 @@ TEST_CASE("UniquePtr to array supports operator[]") {
 	std::unique_ptr<int[]> squares{ new int[5]{ 1,4,9,16,25 } };
 	REQUIRE(squares[0] == 1);
 	REQUIRE(squares[1] == 4);
+
 	REQUIRE(squares[2] == 9);
 }
+
 
 #include <cstdio>
 auto my_deleter = [](int* x) {
@@ -141,3 +144,70 @@ std::unique_ptr<int, decltype(my_deleter)> my_up{
 	new int,
 	my_deleter
 };
+
+using SharedOathbreakers = std::shared_ptr<DeadMenOfDunharrow>;
+
+TEST_CASE("SharedPtr can be used in copy") {
+	auto aragorn = std::make_shared<DeadMenOfDunharrow>();
+	SECTION("constructions") {
+		auto son_of_arathorn{ aragorn };
+		REQUIRE(DeadMenOfDunharrow::oaths_to_fulfill == 1);
+	}
+	SECTION("assignment") {
+		SharedOathbreakers son_of_arathorn;
+		son_of_arathorn = aragorn;
+		REQUIRE(DeadMenOfDunharrow::oaths_to_fulfill == 1);
+	}
+	SECTION("assignement, and original gets discarded") {
+		auto son_of_arathorn = std::make_shared<DeadMenOfDunharrow>();
+		REQUIRE(DeadMenOfDunharrow::oaths_to_fulfill == 2);
+		son_of_arathorn = aragorn;
+		REQUIRE(DeadMenOfDunharrow::oaths_to_fulfill == 1);
+	}
+}
+
+//Weak pointers:
+TEST_CASE("WeakPtr lock() yeilds") {
+	auto message = "The way is shut.";
+	SECTION("a shared pointer when tracked object is alive") {
+		auto aragorn = std::make_shared<DeadMenOfDunharrow>(message);
+		std::weak_ptr<DeadMenOfDunharrow> legolas{ aragorn };
+		auto sh_ptr = legolas.lock();
+
+		REQUIRE(sh_ptr->message == message);
+		REQUIRE(sh_ptr.use_count() == 2);
+	}
+	SECTION("empty when shared pointer empty") {
+		std::weak_ptr<DeadMenOfDunharrow> legolas;
+		{
+			auto aragorn = std::make_shared<DeadMenOfDunharrow>(message);
+			legolas = aragorn;
+		}
+		auto sh_ptr = legolas.lock();
+		REQUIRE(nullptr == sh_ptr);
+	}
+}
+
+//instrusive pointers:
+using IntrusivePtr = boost::intrusive_ptr<DeadMenOfDunharrow>;
+size_t ref_count{};
+
+void intrusive_ptr_add_ref(DeadMenOfDunharrow* d) {
+	ref_count++;
+}
+
+void intrusive_ptr_release(DeadMenOfDunharrow* d) {
+	ref_count--;
+	if (ref_count == 0) delete d;
+}
+
+TEST_CASE("IntrusivePtr uses an embedded reference counter.") {
+	REQUIRE(ref_count == 0);
+	IntrusivePtr aragorn{ new DeadMenOfDunharrow{} };
+	REQUIRE(ref_count == 1);
+	{
+		IntrusivePtr legolas{ aragorn };
+		REQUIRE(ref_count == 2);
+	}
+	REQUIRE(DeadMenOfDunharrow::oaths_to_fulfill == 1);
+}
