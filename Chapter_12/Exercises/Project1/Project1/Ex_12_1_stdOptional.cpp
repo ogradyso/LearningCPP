@@ -1,27 +1,27 @@
-#define CATCH_CONFIG_MAIN
-#include "catch.h"
-
-#include <stdexcept>
-#include <optional>
-template <typename To, typename From>
-std::optional<To> narrow_cast(From value) {
-	const auto converted = static_cast<To>(value);
-	const auto backwards = static_cast<From>(converted);
-	if (value != backwards) return std::nullopt;
-	return converted;
-}
-
-
-TEST_CASE("narrow_cast takes a std::optional") {
-	int myNum{ 5 };
-	REQUIRE(bool{narrow_cast<double>(myNum)});
-}
-
-TEST_CASE("narrow_cast returns an empty value when narrow cast is made") {
-	int myNum{ 12895734 };
-	auto outputAnswer = narrow_cast<short>(myNum);
-	REQUIRE_FALSE(outputAnswer.has_value());
-}
+//#define CATCH_CONFIG_MAIN
+//#include "catch.h"
+//
+//#include <stdexcept>
+//#include <optional>
+//template <typename To, typename From>
+//std::optional<To> narrow_cast(From value) {
+//	const auto converted = static_cast<To>(value);
+//	const auto backwards = static_cast<From>(converted);
+//	if (value != backwards) return std::nullopt;
+//	return converted;
+//}
+//
+//
+//TEST_CASE("narrow_cast takes a std::optional") {
+//	int myNum{ 5 };
+//	REQUIRE(bool{narrow_cast<double>(myNum)});
+//}
+//
+//TEST_CASE("narrow_cast returns an empty value when narrow cast is made") {
+//	int myNum{ 12895734 };
+//	auto outputAnswer = narrow_cast<short>(myNum);
+//	REQUIRE_FALSE(outputAnswer.has_value());
+//}
 
 //int main() {
 //	int perfect{ 496 };

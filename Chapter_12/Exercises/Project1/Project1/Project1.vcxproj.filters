@@ -18,5 +18,8 @@
     <ClCompile Include="Ex_12_1_stdOptional.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Ex_12_2_passwordGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
