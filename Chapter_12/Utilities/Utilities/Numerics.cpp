@@ -42,3 +42,38 @@ TEST_CASE("std::uniform_int_distribution produces uniform ints") {
 	const auto sample_mean = sum / double{ n };
 	REQUIRE(sample_mean == Approx(5).epsilon(.1));
 }
+
+#include <limits>
+
+TEST_CASE("std::numeric_limits::min provides the smallest finite value.") {
+	auto my_cup = std::numeric_limits<int>::min();
+	auto underfloweth = my_cup - 1;
+	REQUIRE(my_cup < underfloweth);
+}
+
+#include <boost/numeric/conversion/converter.hpp>
+using double_to_int = boost::numeric::converter<int, double>;
+
+TEST_CASE("boost::converter offers the static method convert") {
+	REQUIRE(double_to_int::convert(3.14159) == 3);
+}
+
+TEST_CASE("boost::numeric::converter implements operator()") {
+	double_to_int dti;
+	REQUIRE(dti(3.14159) == 3);
+	REQUIRE(double_to_int{}(3.14159) == 3);
+}
+
+TEST_CASE("boost::numeric::converter checks for overflow") {
+	auto yuge = std::numeric_limits<double>::max();
+	double_to_int dti;
+	REQUIRE_THROWS_AS(dti(yuge), boost::numeric::positive_overflow);
+}
+
+#include <boost/numeric/conversion/cast.hpp>
+
+TEST_CASE("boost::boost::numeric_cast checks overflow") {
+	auto yuge = std::numeric_limits<double>::max();
+	REQUIRE_THROWS_AS(boost::numeric_cast<int>(yuge),
+		boost::numeric::positive_overflow);
+}
