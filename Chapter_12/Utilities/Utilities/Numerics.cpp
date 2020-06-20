@@ -77,3 +77,13 @@ TEST_CASE("boost::boost::numeric_cast checks overflow") {
 	REQUIRE_THROWS_AS(boost::numeric_cast<int>(yuge),
 		boost::numeric::positive_overflow);
 }
+
+#include <ratio>
+
+TEST_CASE("std::ratio") {
+	using ten = std::ratio<10, 1>;
+	using two_thirds = std::ratio<2, 3>;
+	using result = std::ratio_multiply<ten, two_thirds>;
+	REQUIRE(result::num == 20);
+	REQUIRE(result::den == 3);
+}
