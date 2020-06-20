@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClCompile Include="DataStructures.cpp" />
     <ClCompile Include="DateTime.cpp" />
+    <ClCompile Include="Numerics.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
