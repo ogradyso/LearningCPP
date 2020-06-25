@@ -487,3 +487,60 @@ TEST_CASE("std::map supports insert_or_assign") {
 	REQUIRE_FALSE(is_new);
 }
 
+TEST_CASE("We can remove std::map elements using") {
+	std::map<const char*, int> pub_year{
+		{colour_of_magic, 1983},
+		{mort, 1987},
+	};
+	SECTION("erase") {
+		pub_year.erase(mort);
+		REQUIRE(pub_year.find(mort) == pub_year.end());
+	}
+	SECTION("clear") {
+		pub_year.clear();
+		REQUIRE(pub_year.empty());
+	}
+}
+
+TEST_CASE("std::multimap supports non-unique keys") {
+	std::array<char, 64> far_out{
+		"Far out in the uncharted backwaters of the unfashionable end..."
+	};
+	std::multimap<char, size_t> indices;
+	for (size_t index{}; index < far_out.size(); index++)
+		indices.emplace(far_out[index], index);
+
+	REQUIRE(indices.count('a') == 6);
+
+	auto [itr, end] = indices.equal_range('d');
+	REQUIRE(itr->second == 23);
+	itr++;
+	REQUIRE(itr->second == 59);
+	itr++;
+	REQUIRE(itr == end);
+}
+
+#include <set>
+#include <boost/graph/adjacency_list.hpp>
+
+TEST_CASE("boost::adjacency_list stores graph data") {
+	boost::adjacency_list<> graph{};
+	auto vertex_1 = boost::add_vertex(graph);
+	auto vertex_2 = boost::add_vertex(graph);
+	auto vertex_3 = boost::add_vertex(graph);
+	auto vertex_4 = boost::add_vertex(graph);
+	auto edge_12 = boost::add_edge(vertex_1, vertex_2, graph);
+	auto edge_13 = boost::add_edge(vertex_1, vertex_3, graph);
+	auto edge_21 = boost::add_edge(vertex_2, vertex_1, graph);
+	auto edge_24 = boost::add_edge(vertex_2, vertex_4, graph);
+	auto edge_43 = boost::add_edge(vertex_4, vertex_3, graph);
+
+	REQUIRE(boost::num_vertices(graph) == 4);
+	REQUIRE(boost::num_edges(graph) == 5);
+
+	auto [begin, end] = boost::adjacent_vertices(vertex_1, graph);
+	std::set<decltype(vertex_1)> neighbors_1{ begin, end };
+	REQUIRE(neighbors_1.count(vertex_2) == 1);
+	REQUIRE(neighbors_1.count(vertex_3) == 1);
+	REQUIRE(neighbors_1.count(vertex_4) == 0);
+}
