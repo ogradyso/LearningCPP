@@ -544,3 +544,69 @@ TEST_CASE("boost::adjacency_list stores graph data") {
 	REQUIRE(neighbors_1.count(vertex_3) == 1);
 	REQUIRE(neighbors_1.count(vertex_4) == 0);
 }
+
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/json_parser.hpp>
+
+TEST_CASE("boost::property_tree::ptree stores tree data") {
+	using namespace boost::property_tree;
+	ptree p;
+	p.put("name", "finfisher");
+	p.put("year", 2014);
+	p.put("features.process", "LSASS");
+	p.put("features.driver", "mssounddx.sys");
+	p.put("features.arch", 32);
+	REQUIRE(p.get_child("year").get_value<int>() == 2014);
+
+	const auto file_name = "rootkit.json";
+	write_json(file_name, p);
+
+	ptree p_copy;
+	read_json(file_name, p_copy);
+	REQUIRE(p_copy == p);
+}
+
+#include <cmath>
+#include <stdexcept>
+#include <initializer_list>
+#include <vector>
+
+size_t square_root(size_t x) {
+	const auto result = static_cast<size_t>(sqrt(x));
+	if (result * result != x) throw std::logic_error{ "Not a perfect square." };
+	return result;
+}
+
+template <typename T>
+struct SquareMatrix {
+	SquareMatrix(std::initializer_list<T> val)
+		: dim{ square_root(val.size()) },
+		data(dim, std::vector<T>{}) {
+		auto itr = val.begin();
+		for (size_t row{}; row < dim; row++) {
+			data[row].assigned(itr, itr + dim);
+			itr += dim;
+		}
+	}
+	T& at(size_t row, size_t col) {
+		if (row >= dim || col >= dim)
+			throw std::out_of_range{ "Index invalid." };
+		return data[row][col];
+	}
+	const size_t dim;
+private:
+	std::vector<std::vector<T>> data;
+};
+
+TEST_CASE("SquareMatrix and std::initializer_list") {
+	SquareMatrix<int> mat{
+		1, 2, 3, 4,
+		5, 0, 7, 8,
+		9, 10, 11, 12,
+		13, 14, 15, 16
+	};
+	REQUIRE(mat.dim == 4);
+	mat.at(1, 1) = 6;
+	REQUIRE(mat.at(1, 1) == 6);
+	REQUIRE(mat.at(0, 2) == 3);
+}
