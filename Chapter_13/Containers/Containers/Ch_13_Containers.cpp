@@ -309,6 +309,7 @@ TEST_CASE("std::set supports") {
 		REQUIRE(fib.size() == 4);
 		REQUIRE(fib_copy.size() == 4);
 	}
+
 	SECTION("move construction") {
 		auto fib_moved(std::move(fib));
 		REQUIRE(fib.empty());
