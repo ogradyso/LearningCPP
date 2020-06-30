@@ -244,7 +244,7 @@ TEST_CASE("STL string conversion function") {
 		REQUIRE("8675309"s == std::to_string(8675309));
 	}
 	SECTION("to_wstring") {
-		REQUIRE(L"109951.1627778"s == std::to_wstring(109951.1627776));
+		REQUIRE(L"109951.1627776"s == std::to_wstring(109951.1627776));
 	}
 }
 
@@ -271,4 +271,59 @@ TEST_CASE("STL stirng conversion function") {
 	SECTION("stod") {
 		REQUIRE(std::stod("2.7182818"s) == Approx(2.7182818));
 	}
+}
+
+// String view
+TEST_CASE("std::string_view suppports") {
+	SECTION("default construction") {
+		std::string_view view;
+		REQUIRE(view.data() == nullptr);
+		REQUIRE(view.size() == 0);
+		REQUIRE(view.empty());
+	}
+	SECTION("construction from string") {
+		std::string word("sacrosanct");
+		std::string_view view(word);
+		REQUIRE(view == "sacrosanct");
+	}
+	SECTION("construction from C-string") {
+		auto word = "viewership";
+		std::string_view view(word);
+		REQUIRE(view == "viewership");
+	}
+	SECTION("construction from C-string and length") {
+		auto word = "viewership";
+		std::string_view view(word, 4);
+		REQUIRE(view == "view");
+	}
+}
+
+TEST_CASE("std::string_view is modifiable with") {
+	std::string_view view("previewing");
+	SECTION("remove prefix") {
+		view.remove_prefix(3);
+		REQUIRE(view == "viewing");
+	}
+	SECTION("remove_suffix") {
+		view.remove_suffix(3);
+		REQUIRE(view == "preview");
+	}
+}
+
+//using string_view:
+#include <string_view>
+
+size_t count_vees(std::string_view my_view) {
+	size_t result{};
+	for (auto letter : my_view)
+		if (letter == 'v') result++;
+	return result;
+}
+
+//regular expressions
+#include <regex>
+
+TEST_CASE("std::basic_regex constructs from a string literal") {
+	std::regex zip_regex{ R"((\w{2})?(\d{5})(-\d{4})?)" };
+	REQUIRE(zip_regex.mark_count() == 3);
 }
