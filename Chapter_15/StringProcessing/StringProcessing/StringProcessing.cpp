@@ -394,3 +394,62 @@ TEST_CASE("boost::algorithm::all evalueates a predicate for all elements") {
 	std::string word("juju");
 	REQUIRE(all(word, [](auto c) {return c == 'j' || c == 'u'; }));
 }
+
+//boost::string classifiers
+#include <boost/algorithm/string/classification.hpp>
+
+TEST_CASE("boost::algorithm::is_alnum") {
+	using namespace boost::algorithm;
+	const auto classifier = is_alnum();
+	SECTION("evaluates alphanumeric characters") {
+		REQUIRE(classifier('a'));
+		REQUIRE_FALSE(classifier('$'));
+	}
+	SECTION("works with all") {
+		REQUIRE(all("nostarch", classifier));
+		REQUIRE_FALSE(all("@nostarch", classifier));
+	}
+}
+
+//boost::string finders
+#include <boost/algorithm/string/finder.hpp>
+
+TEST_CASE("boost::algorithm::nth_finder finds the nth occurrence") {
+	const auto finder = boost::algorithm::nth_finder("na", 1);
+	std::string name("Carl Brutananadilewski");
+	const auto result = finder(name.begin(), name.end());
+	REQUIRE(result.begin() == name.begin() + 12);
+	REQUIRE(result.end() == name.begin() + 14);
+}
+
+//boost::string modifying algorithms
+#include <boost/algorithm/string/case_conv.hpp>
+
+TEST_CASE("boost::algorithm::to_upper") {
+	std::string powers("difficulty controlling the volume of my voice");
+	SECTION("upper-cases a string") {
+		boost::algorithm::to_upper(powers);
+		REQUIRE(powers == "DIFFICULTY CONTROLLING THE VOLUME OF MY VOICE");
+	}
+	SECTION("_copy leaves the original unmodified") {
+		auto result = boost::algorithm::to_upper_copy(powers);
+		REQUIRE(powers == "difficulty controlling the volume of my voice");
+		REQUIRE(result == "DIFFICULTY CONTROLLING THE VOLUME OF MY VOICE");
+	}
+}
+
+#include <boost/algorithm/string/replace.hpp>
+
+TEST_CASE("boost::algorithm::replace_first") {
+	using namespace boost::algorithm;
+	std::string publisher("No Starch Press");
+	SECTION("replaces the first occurrence of a string") {
+		replace_first(publisher, "No", "Medium");
+		REQUIRE(publisher == "Medium Starch Press");
+	}
+	SECTION("has a case-insensitive variant") {
+		auto result = ireplace_first_copy(publisher, "NO", "MEDIUM");
+		REQUIRE(publisher == "No Starch Press");
+		REQUIRE(result == "MEDIUM Starch Press");
+	}
+}
