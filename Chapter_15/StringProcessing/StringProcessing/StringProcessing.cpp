@@ -453,3 +453,58 @@ TEST_CASE("boost::algorithm::replace_first") {
 		REQUIRE(result == "MEDIUM Starch Press");
 	}
 }
+
+//SPLITTING AND JOINING
+
+#include <vector>
+#include <boost/algorithm/string/split.hpp>
+#include <boost/algorithm/string/classification.hpp>
+
+TEST_CASE("boost::algorithm::split splits a range based on a predicate") {
+	using namespace boost::algorithm;
+	std::string publisher("No Starch Press");
+	std::vector<std::string> tokens;
+	split(tokens, publisher, is_space());
+	REQUIRE(tokens[0] == "No");
+	REQUIRE(tokens[1] == "Starch");
+	REQUIRE(tokens[2] == "Press");
+}
+
+#include <vector>
+#include <boost/algorithm/string/join.hpp>
+
+TEST_CASE("boost::algorithm::join staples tokens together") {
+	std::vector<std::string> tokens{ "We invited the strippers",
+									"JFK", "and Stalin." };
+	auto result = boost::algorithm::join(tokens, ", ");
+	REQUIRE(result == "We invited the strippers, JFK, and Stalin.");
+}
+
+//searching
+#include <boost/algorithm/string/find.hpp>
+
+TEST_CASE("boost::algorithm::find_head computes the head") {
+	std::string word("blandishment");
+	const auto result = boost::algorithm::find_head(word, 5);
+	REQUIRE(result.begin() == word.begin());  //(b)landishment
+	REQUIRE(result.end() == word.begin()+5);  //bland(i)shment
+}
+
+//boost tokenizer
+#include<boost/tokenizer.hpp>
+#include<string>
+
+TEST_CASE("boost::tokenizer splits token-delimited strings") {
+	std::string palindrome("A man, a plan, a canal, Panama!");
+	boost::char_separator<char> comma{ "," };
+	boost::tokenizer<boost::char_separator<char>> tokens{ palindrome, comma };
+	auto itr = tokens.begin();
+	REQUIRE(*itr == "A man");
+	itr++;
+	REQUIRE(*itr == " a plan");
+	itr++;
+	REQUIRE(*itr == " a canal");
+	itr++;
+	REQUIRE(*itr == " Panama!");
+	itr++;
+}
