@@ -23,6 +23,7 @@ void AlphaHistogram::ingest(const char* x) {
 }
 
 void AlphaHistogram::print() const {
+
 	for (auto index{ pos_A }; index <= pos_Z; index++) {
 		printf("%c: ", index);
 		auto n_asterisks = counts[index - pos_A];
