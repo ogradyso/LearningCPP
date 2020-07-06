@@ -30,5 +30,14 @@
     <ClCompile Include="Listing_16_8.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Listing_16_9.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Listing_16_10.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Streams.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
