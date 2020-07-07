@@ -141,8 +141,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FileFactory.cpp" />
     <ClCompile Include="Listing_16_1.cpp" />
     <ClCompile Include="Listing_16_10.cpp" />
+    <ClCompile Include="Listing_16_14.cpp" />
+    <ClCompile Include="Listing_16_15.cpp" />
     <ClCompile Include="Streams.cpp" />
     <ClCompile Include="Listing_16_3.cpp" />
     <ClCompile Include="Listing_16_5.cpp" />
