@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{9fbb33e2-ad45-47d8-b211-a9f2440d60bd}</ProjectGuid>
-    <RootNamespace>Streams</RootNamespace>
+    <ProjectGuid>{e5088150-a353-48c7-82b0-97e61673bec0}</ProjectGuid>
+    <RootNamespace>Exercises</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -141,20 +141,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="FileFactory.cpp" />
-    <ClCompile Include="Listing_16_1.cpp" />
-    <ClCompile Include="Listing_16_10.cpp" />
-    <ClCompile Include="Listing_16_14.cpp" />
-    <ClCompile Include="Listing_16_15.cpp" />
-    <ClCompile Include="Listing_16_17.cpp" />
-    <ClCompile Include="Listing_16_18.cpp" />
-    <ClCompile Include="Listing_16_19.cpp" />
-    <ClCompile Include="Streams.cpp" />
-    <ClCompile Include="Listing_16_3.cpp" />
-    <ClCompile Include="Listing_16_5.cpp" />
-    <ClCompile Include="Listing_16_7.cpp" />
-    <ClCompile Include="Listing_16_8.cpp" />
-    <ClCompile Include="Listing_16_9.cpp" />
+    <ClCompile Include="Ex_16_1_AutoBrakeOutputStream.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
