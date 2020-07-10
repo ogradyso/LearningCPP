@@ -21,5 +21,8 @@
     <ClCompile Include="Ex_16_2_Capitalizer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Ex_16_4_Filedata.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

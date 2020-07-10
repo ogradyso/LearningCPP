@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClCompile Include="Ex_16_1_AutoBrakeOutputStream.cpp" />
     <ClCompile Include="Ex_16_2_Capitalizer.cpp" />
+    <ClCompile Include="Ex_16_4_Filedata.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
