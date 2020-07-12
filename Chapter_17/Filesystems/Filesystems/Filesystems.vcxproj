@@ -145,8 +145,11 @@
   <ItemGroup>
     <ClCompile Include="Filesystems.cpp" />
     <ClCompile Include="Listing_17_2_DecomposingPaths.cpp" />
+    <ClCompile Include="Listing_17_5_InstpectingFiles.cpp" />
     <ClCompile Include="Listing_17_3_ModifyingPaths.cpp" />
     <ClCompile Include="Listing_17_4_ComposingPaths.cpp" />
+    <ClCompile Include="Listing_17_6_ManipulatingFilesDirectories.cpp" />
+    <ClCompile Include="Listing_17_7_DirectoryIterators.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
