@@ -36,5 +36,11 @@
     <ClCompile Include="Listing_17_7_DirectoryIterators.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Listing_17_8_RecursiveDirectoryIteration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Listing_17_9_fstreamInteroperation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

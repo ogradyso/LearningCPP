@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{4f27729b-c802-4caa-b1c7-77508d8c8f8a}</ProjectGuid>
-    <RootNamespace>Filesystems</RootNamespace>
+    <ProjectGuid>{b7a18392-cd00-486d-a002-5d709dcaf6b6}</ProjectGuid>
+    <RootNamespace>Exercises</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -89,7 +89,6 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Program Files\boost_1_73_0</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -105,7 +104,6 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Program Files\boost_1_73_0</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -143,15 +141,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Filesystems.cpp" />
-    <ClCompile Include="Listing_17_2_DecomposingPaths.cpp" />
-    <ClCompile Include="Listing_17_5_InstpectingFiles.cpp" />
-    <ClCompile Include="Listing_17_3_ModifyingPaths.cpp" />
-    <ClCompile Include="Listing_17_4_ComposingPaths.cpp" />
-    <ClCompile Include="Listing_17_6_ManipulatingFilesDirectories.cpp" />
-    <ClCompile Include="Listing_17_7_DirectoryIterators.cpp" />
-    <ClCompile Include="Listing_17_8_RecursiveDirectoryIteration.cpp" />
-    <ClCompile Include="Listing_17_9_fstreamInteroperation.cpp" />
+    <ClCompile Include="Ex_17_1_fileExtensionFinder.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
