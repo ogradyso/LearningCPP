@@ -18,5 +18,8 @@
     <ClCompile Include="Ex_17_1_fileExtensionFinder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Ex_17_2_DirectorySearchOptions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

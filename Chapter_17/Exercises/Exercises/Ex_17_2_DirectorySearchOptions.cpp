@@ -1,7 +1,7 @@
-
 //#include <filesystem>
 //#include <iomanip>
 //#include <iostream>
+//#include <string>
 //
 //using namespace std;
 //using namespace std::filesystem;
@@ -32,17 +32,24 @@
 //}
 //
 //int main(int argc, const char** argv) {
-//    if (argc != 2) {
+//    if (argc != 3) {
 //        cerr << "Usage: treedir PATH";
 //        return -1;
 //    }
-//    const path sys_path{ argv[1] };
+//    std::string optionFlag{ argv[1] };
+//    const path sys_path{ argv[2] };
+//    bool boolRecursive{ false };
 //    cout << "Size         Files  Dirs Name\n";
 //    cout << "------------ ----- ----- ------------\n";
 //    Attributes root_attributes{};
+//    if (as_cstr[0] == "f") {
+//        if (optionFlag.find("R") != std::string::npos) {
+//            boolRecursive = true;
+//        }
+//    }
 //    for (const auto& entry : directory_iterator{ sys_path }) {
 //        try {
-//            if (entry.is_directory()) {
+//            if (entry.is_directory() and boolRecursive) {
 //                const auto attributes = explore(entry);
 //                print_line(attributes, entry.path().string());
 //                root_attributes.n_directories++;
