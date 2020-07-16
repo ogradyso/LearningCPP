@@ -4,11 +4,13 @@
 #include <vector>
 #include <string>
 
+using namespace std;
+
 //non-modifying sequence operations
 #include <algorithm>
 
 TEST_CASE("all_of") {
-	std::vector<std::string> words{ "Auntie", "Anne's", "alligator" };
+	vector<string> words{ "Auntie", "Anne's", "alligator" };
 	const auto starts_with_a =
 		[](const auto& word) {
 		if (word.empty()) return false;
@@ -21,3 +23,28 @@ TEST_CASE("all_of") {
 	REQUIRE_FALSE(all_of(words.cbegin(), words.cend(), has_length_six));
 }
 
+//any_of
+TEST_CASE("any_of") {
+	vector<string> words{ "Barber", "Baby", "bubbles" };
+	const auto contains_bar = [](const auto& word) {
+		return word.find("Bar") != string::npos;
+	};
+	REQUIRE(any_of(words.cbegin(), words.cend(), contains_bar));
+
+	const auto  is_empty = [](const auto& word) {return word.empty(); };
+	REQUIRE_FALSE(any_of(words.cbegin(), words.cend(), is_empty));
+}
+
+//none_of
+TEST_CASE("none_of") {
+	vector<string> words{"Camel", "on", "the", "ceiling"};
+	const auto is_hump_day = [](const auto& word) {
+		return word == "hump day";
+	};
+	REQUIRE(none_of(words.cbegin(), words.cend(), is_hump_day));
+
+	const auto is_definite_article = [](const auto& word) {
+		return word == "the" || word == "ye";
+	};
+	REQUIRE_FALSE(none_of(words.cbegin(), words.cend(), is_definite_article));
+}
