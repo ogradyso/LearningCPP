@@ -146,4 +146,75 @@ TEST_CASE("count") {
 }
 
 //mismatch
-TEST_CASE("")
+TEST_CASE("mismatch") {
+	vector<string> words1{ "Kitten","Kangaroo","Kick" };
+	vector<string> words2{ "Kitten", "bandicoot","roundhouse" };
+	const auto mismatch_result1 = mismatch(words1.cbegin(), words1.cend(),
+		words2.cbegin());
+	REQUIRE(*mismatch_result1.first == "Kangaroo");
+	REQUIRE(*mismatch_result1.second == "bandicoot");
+
+	const auto second_letter_matches = [](const auto& word1,
+		const auto& word2) {
+			if (word1.size() < 2) return false;
+			if (word2.size() < 2) return false;
+			return word1[1] == word2[1];
+	};
+	const auto mismatch_result2 = mismatch(words1.cbegin(), words1.cend(),
+		words2.cbegin(), second_letter_matches);
+	REQUIRE(*mismatch_result2.first == "Kick");
+	REQUIRE(*mismatch_result2.second == "roundhouse");
+}
+
+//equal
+TEST_CASE("equal") {
+	vector<string> words1{ "Lazy","lion", "licks" };
+	vector<string> words2{ "Lazy","lion","kicks" };
+	const auto equal_result1 = equal(words1.cbegin(), words1.cend(),
+		words2.cbegin());
+	REQUIRE_FALSE(equal_result1);
+
+	words2[2] = words1[2];
+	const auto equal_result2 = equal(words1.cbegin(), words1.cend(),
+		words2.cbegin());
+	REQUIRE(equal_result2);
+}
+
+//is_permutation
+TEST_CASE("is_permutation") {
+	vector<string> words1{ "moonlight", "mighty", "nice" };
+	vector<string> words2{ "nice", "moonlight","mighty" };
+	const auto result = is_permutation(words1.cbegin(), words1.cend(), words2.cbegin());
+	REQUIRE(result);
+}
+
+//search
+TEST_CASE("search") {
+	vector<string> words1{ "Nine", "new","neckties","and", "a", "nightshirt" };
+	vector<string> words2{ "and", "a", "nightshirt" };
+	const auto search_result_1 = search(words1.cbegin(), words1.cend(), words2.cbegin(), words2.cend());
+	REQUIRE(*search_result_1 == "and");
+	vector<string> words3{ "and","a","nightpant" };
+	const auto search_result_2 = search(words1.cbegin(), words1.cend(), words3.cbegin(), words3.cend());
+	REQUIRE(search_result_2 == words1.cend());
+}
+
+//search_n
+TEST_CASE("search_n") {
+	vector<string> words{ "an","organge","owl","owl","owl","today" };
+	const auto result = search_n(words.cbegin(), words.cend(), 3, "owl");
+	REQUIRE(result == words.cbegin()+2);
+}
+
+/*******************************************
+*        Mutating Sequence Operations
+********************************************/
+
+//copy
+TEST_CASE("copy") {
+	vector<string> words1{ "and","prosper" };
+	vector<string> words2{ "Live","long" };
+	copy(words1.cbegin(), words1.cend(), back_inserter(words2));
+	REQUIRE(words2 == vector<string>{"Live", "long", "and", "prosper"});
+
+}
