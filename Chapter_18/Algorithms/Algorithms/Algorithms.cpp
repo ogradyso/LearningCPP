@@ -218,3 +218,47 @@ TEST_CASE("copy") {
 	REQUIRE(words2 == vector<string>{"Live", "long", "and", "prosper"});
 
 }
+
+
+//copy_n
+TEST_CASE("copy_n") {
+	vector<string> words1{ "on", "the", "wind" };
+	vector<string> words2{ "I'm", "a", "leaf" };
+	copy_n(words1.cbegin(), words1.size(), back_inserter(words2));
+	REQUIRE(words2 == vector<string>{"I'm", "a", "leaf", "on", "the", "wind"});
+}
+
+//copy_backward
+TEST_CASE("copy_backward") {
+	vector<string> words1{ "A","man","a", "plan", "a", "bran","muffin" };
+	vector<string> words2{ "a", "canal", "Panama" };
+	const auto result = copy_backward(words2.cbegin(), words2.cend(), words1.end());
+	REQUIRE(words1 == vector<string>{"A", "man", "a", "plan", "a", "canal", "Panama"});
+}
+
+//move
+
+struct MoveDetector {
+	MoveDetector() 
+		: owner{ true } {}
+	MoveDetector(const MoveDetector&) = delete;
+	MoveDetector& operator=(const MoveDetector&) = delete;
+	MoveDetector(MoveDetector&& o) = delete;
+	MoveDetector& operator=(MoveDetector&& o) {
+		o.owner = false;
+		owner = true;
+		return *this;
+	}
+	bool owner;
+};
+
+TEST_CASE("move") {
+	vector<MoveDetector> detectors1(2);
+	vector<MoveDetector> detectors2(2);
+	move(detectors1.begin(), detectors1.end(), detectors2.begin());
+	REQUIRE_FALSE(detectors1[0].owner);
+	REQUIRE_FALSE(detectors1[1].owner);
+	REQUIRE(detectors2[0].owner);
+	REQUIRE(detectors2[1].owner);
+}
+
