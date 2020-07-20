@@ -262,3 +262,65 @@ TEST_CASE("move") {
 	REQUIRE(detectors2[1].owner);
 }
 
+//move_backward
+TEST_CASE("move_backward") {
+	vector<MoveDetector> detectors1(2);
+	vector<MoveDetector> detectors2(2);
+	move_backward(detectors1.begin(), detectors1.end(), detectors2.end());
+	REQUIRE_FALSE(detectors1[0].owner);
+	REQUIRE_FALSE(detectors1[1].owner);
+	REQUIRE(detectors2[0].owner);
+	REQUIRE(detectors2[1].owner);
+}
+
+//swap_ranges
+TEST_CASE("swap_ranges") {
+	vector<string> words1{ "The","king","is","dead." };
+	vector<string> words2{ "Long","live","the","king." };
+	swap_ranges( words1.begin(), words1.end(), words2.begin());
+	REQUIRE(words1 == vector<string>{"Long", "live", "the", "king."});
+	REQUIRE(words2 == vector<string>{"The", "king", "is", "dead."});
+}
+
+//transform
+#include <boost/algorithm/string/case_conv.hpp>
+
+TEST_CASE("transform") {
+	vector<string> words1{ "farewell","hello","farewell","hello" };
+	vector<string> result1;
+	auto upper = [](string x) {
+		boost::algorithm::to_upper(x);
+		return x;
+	};
+	transform(words1.begin(), words1.end(), back_inserter(result1), upper);
+	REQUIRE(result1 == vector<string>{"FAREWELL", "HELLO", "FAREWELL", "HELLO"});
+	vector<string> words2{ "light","human","bro","quantum" };
+	vector<string> words3{ "radar","robot","pony","bit" };
+	vector<string> result2;
+	auto portmantize = [](const auto& x, const auto& y) {
+		const auto x_letters = min(size_t{ 2 }, x.size());
+		string result{ x.begin(), x.begin() + x_letters };
+		const auto y_letters = min(size_t{ 3 }, y.size());
+		result.insert(result.end(), y.end() - y_letters, y.end());
+		return result;
+	};
+	transform(words2.begin(), words2.end(), words3.begin(), back_inserter(result2), portmantize);
+	REQUIRE(result2 == vector<string>{"lidar", "hubot", "brony", "qubit"});
+}
+
+//replace
+#include <string_view>
+
+TEST_CASE("replace") {
+	using namespace std::literals;
+	vector<string> words1{ "There","is","no","try" };
+	replace(words1.begin(), words1.end(), "try"sv, "spoon"sv);
+	REQUIRE(words1 == vector<string> {"There", "is", "no", "spoon"});
+	const vector<string> words2{ "There","is","no","spoon" };
+	vector<string> words3{ "There","is","no","spoon" };
+	auto has_two_os = [](const auto& x) {
+		return count(x.begin(), x.end(), 'o') == 2;
+	};
+	replace_copy_if(words2.begin(), words2.end(), words3.begin(), has_two_os, "try"sv);
+	REQUIRE(words3 == vector<string>{"There", "is", "no", "try"});
+}
