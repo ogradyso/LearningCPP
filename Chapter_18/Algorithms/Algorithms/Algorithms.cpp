@@ -324,3 +324,45 @@ TEST_CASE("replace") {
 	replace_copy_if(words2.begin(), words2.end(), words3.begin(), has_two_os, "try"sv);
 	REQUIRE(words3 == vector<string>{"There", "is", "no", "try"});
 }
+
+//fill
+//if police police police police, who polices the police police?
+TEST_CASE("fill") {
+	vector<string> answer1(6);
+	fill(answer1.begin(), answer1.end(), "police");
+	REQUIRE(answer1 == vector<string>{"police", "police", "police", "police", "police", "police" });
+	vector<string> answer2;
+	fill_n(back_inserter(answer2), 6, "police");
+	REQUIRE(answer2 == vector<string>{"police", "police", "police", "police", "police", "police"});
+}
+
+//generate
+TEST_CASE("generate") {
+	auto i{ 1 };
+	auto pow_of_2 = [&i]() {
+		const auto tmp = i;
+		i *= 2;
+		return tmp;
+	};
+	vector<int> series1(6);
+	generate(series1.begin(), series1.end(), pow_of_2);
+	REQUIRE(series1 == vector<int>{1, 2, 4, 8, 16, 32});
+
+	vector<int> series2;
+	generate_n(back_inserter(series2), 6, pow_of_2);
+	REQUIRE(series2 == vector<int>{64, 128,256,512,1024,2048});
+}
+
+//remove
+TEST_CASE("remove") {
+	auto is_vowel = [](char x) {
+		const static string vowels{ "aeiouAEIOU" };
+		return vowels.find(x) != string::npos;
+	};
+	string pilgrim = "Among the things Billy Pilgrim could not change were the past, the present, and the future.";
+	const auto new_end = remove_if(pilgrim.begin(), pilgrim.end(), is_vowel);
+	REQUIRE(pilgrim == "mng th thngs Blly Plgrm cld nt chng wr th pst, th prsnt, nd th ftr.present, and the future.");
+
+	pilgrim.erase(new_end, pilgrim.end());
+	REQUIRE(pilgrim == "mng th thngs Blly Plgrm cld nt chng wr th pst, th prsnt, nd th ftr.");
+}
