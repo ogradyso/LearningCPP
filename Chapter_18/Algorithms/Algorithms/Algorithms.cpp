@@ -382,38 +382,96 @@ TEST_CASE("reverse") {
 	REQUIRE(stinky == "repaid");
 }
 
-//sample
-//#include <map>
-//#include <string>
-//#include <iostream>
-//#include <iomanip>
-//#include <random>
-//
-//using namespace std;
-//
-//const string population = "ABCD";
-//const size_t n_samples{ 1'000'000 };
-//mt19937_64 urbg;
-//
-//void sample_length(size_t n) {
-//	cout << "-- Length " << n << " --\n";
-//	map<string, size_t> counts;
-//	for (size_t i{}; i < n_samples; i++) {
-//		string result;
-//		sample(population.begin(), population.end(), back_inserter(counts), n, urbg);
-//		counts[result]++;
-//	}
-//	for (const auto [sample, n] : counts) {
-//		const auto percentage = 100 * n / static_cast<double>(n_samples);
-//		cout << percentage << " '" << sample << "'\n";
-//	}
-//}
-//
-//int main() {
-//	cout << fixed << setprecision(1);
-//	sample_length(0);
-//	sample_length(1);
-//	sample_length(2);
-//	sample_length(3);
-//	sample_length(4);
-//}
+//sorting and related operations
+
+//sort
+TEST_CASE("sort") {
+	string goat_grass{ "spoilage" };
+	sort(goat_grass.begin(), goat_grass.end());
+	REQUIRE(goat_grass == "aegilops");
+}
+
+//stable_sort
+enum class CharCategory {
+	Ascender,
+	Normal,
+	Descender
+};
+
+CharCategory categorize(char x) {
+	switch (x) {
+	case 'g':
+	case 'j':
+	case 'p':
+	case 'q':
+	case 'y':
+		return CharCategory::Descender;
+	case 'b':
+	case 'd':
+	case 'f':
+	case 'h':
+	case 'k':
+	case 'l':
+	case 't':
+		return CharCategory::Ascender;
+	}
+	return CharCategory::Normal;
+}
+
+bool ascension_compare(char x, char y) {
+	return categorize(x) < categorize(y);
+}
+
+TEST_CASE("stable_sort") {
+	string word{ "outgrin" };
+	stable_sort(word.begin(), word.end(), ascension_compare);
+	REQUIRE(word == "touring");
+}
+
+//partial_sort
+TEST_CASE("partial_sort") {
+	string word1{ "nectarous" };
+	partial_sort(word1.begin(), word1.begin() + 4, word1.end());
+	REQUIRE(word1 == "acentrous");
+
+	string word2{ "pretanning" };
+	partial_sort(word2.begin(), word2.begin() + 3, word2.end(), ascension_compare);
+	REQUIRE(word2 == "trepanning");
+}
+
+//is_sorted
+TEST_CASE("is_sorted") {
+	string word1{ "billowy" };
+	REQUIRE(is_sorted(word1.begin(), word1.end()));
+
+	string word2{ "floppy" };
+	REQUIRE(word2.end() == is_sorted_until(word2.begin(), word2.end(), ascension_compare));
+
+}
+
+//nth_element
+TEST_CASE("nth_element") {
+	vector<int> numbers{ 1,9,2,8,3,7,4,6,5 };
+	nth_element(numbers.begin(), numbers.begin() + 5, numbers.end());
+	auto less_than_6th_elem = [&elem = numbers[5]](int x) {
+		return x < elem;
+	};
+	REQUIRE(all_of(numbers.begin(), numbers.begin() + 5, less_than_6th_elem));
+	REQUIRE(numbers[5] == 6);
+}
+
+//binary search
+
+//lower_bound
+TEST_CASE("lower_bound") {
+	vector<int> numbers{ 2,4,5,6,6,9 };
+	const auto result = lower_bound(numbers.begin(), numbers.end(), 5);
+	REQUIRE(result == numbers.begin() + 2);
+}
+
+//upper_bound
+TEST_CASE("upper_bound") {
+	vector<int> numbers{ 2,4,5,6,6,9 };
+	const auto result = upper_bound(numbers.begin(), numbers.end(), 5);
+	REQUIRE(result == numbers.begin() + 3);
+}

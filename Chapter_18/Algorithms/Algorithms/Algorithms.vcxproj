@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClCompile Include="Algorithms.cpp" />
     <ClCompile Include="Sample.cpp" />
+    <ClCompile Include="Shuffle.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
