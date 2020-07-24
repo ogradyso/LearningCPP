@@ -475,3 +475,55 @@ TEST_CASE("upper_bound") {
 	const auto result = upper_bound(numbers.begin(), numbers.end(), 5);
 	REQUIRE(result == numbers.begin() + 3);
 }
+
+//equal_range
+TEST_CASE("equal_range") {
+	vector<int> numbers{ 2,4,5,6,6,9 };
+	const auto [rbeg, rend] = equal_range(numbers.begin(), numbers.end(), 6);
+	REQUIRE(rbeg == numbers.begin() + 3);
+	REQUIRE(rend == numbers.begin() + 5);
+}
+
+//binary_search
+TEST_CASE("binary_search"){
+	vector<int> numbers{ 2,3,4,5,6,6,9 };
+	REQUIRE(binary_search(numbers.begin(), numbers.end(), 6));
+	REQUIRE_FALSE(binary_search(numbers.begin(), numbers.end(), 7));
+}
+
+//partitioning algorithms
+
+//is_partititioned
+TEST_CASE("is_partitioned") {
+	auto is_odd = [](auto x) {return x % 2 == 1; };
+	vector<int> numbers1{ 9,5,9,6,4,2 };
+	REQUIRE(is_partitioned(numbers1.begin(), numbers1.end(), is_odd));
+	vector<int> numbers2{ 9,4,9,6,4,2 };
+	REQUIRE_FALSE(is_partitioned(numbers2.begin(), numbers2.end(), is_odd));
+}
+
+//partition
+TEST_CASE("partition") {
+	auto is_odd = [](auto x) {return x % 2 == 1; };
+	vector<int> numbers{ 1,2,3,4,5 };
+	const auto partition_point = partition(numbers.begin(), numbers.end(), is_odd);
+	REQUIRE(is_partitioned(numbers.begin(), numbers.end(), is_odd));
+	REQUIRE(partition_point == numbers.begin() + 3);
+}
+
+//partition_copy
+TEST_CASE("partition_copy") {
+	auto is_odd = [](auto x) {return x % 2 == 1; };
+	vector<int> numbers{ 1,2,3,4,5 }, odds, evens;
+	partition_copy(numbers.begin(), numbers.end(), back_inserter(odds), back_inserter(evens), is_odd);
+	REQUIRE(all_of(odds.begin(), odds.end(), is_odd));
+	REQUIRE(none_of(evens.begin(), evens.end(), is_odd));
+}
+
+//stable_partition
+TEST_CASE("stable_partition") {
+	auto is_odd = [](auto x) {return x % 2 == 1; };
+	vector<int> numbers{ 1,2,3,4,5 };
+	stable_partition(numbers.begin(), numbers.end(), is_odd);
+	REQUIRE(numbers == vector<int>{1, 3, 5, 2, 4});
+}
