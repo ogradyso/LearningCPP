@@ -144,6 +144,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Algorithms.cpp" />
+    <ClCompile Include="NumericAlgorithms.cpp" />
     <ClCompile Include="Sample.cpp" />
     <ClCompile Include="Shuffle.cpp" />
   </ItemGroup>
