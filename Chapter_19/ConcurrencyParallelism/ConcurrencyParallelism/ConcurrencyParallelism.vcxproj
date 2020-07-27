@@ -144,7 +144,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConcurrencyParallelism.cpp" />
-    <ClCompile Include="Factorize.cpp" />
+    <ClCompile Include="Factorize_parallel.cpp" />
+    <ClCompile Include="Factorize_serial.cpp" />
+    <ClCompile Include="Listing_19_10_ParallelSort.cpp" />
+    <ClCompile Include="Listing_19_10_SharingAndCoordinating.cpp" />
+    <ClCompile Include="Listing_19_11_Mutexes.cpp" />
+    <ClCompile Include="Listing_19_12_lockGuard.cpp" />
+    <ClCompile Include="Listing_19_13_Atomics.cpp" />
+    <ClCompile Include="Listing_19_14_ConditionVariables.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

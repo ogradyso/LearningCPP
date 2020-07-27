@@ -18,7 +18,28 @@
     <ClCompile Include="ConcurrencyParallelism.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Factorize.cpp">
+    <ClCompile Include="Factorize_serial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Factorize_parallel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Listing_19_10_SharingAndCoordinating.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Listing_19_11_Mutexes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Listing_19_12_lockGuard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Listing_19_13_Atomics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Listing_19_14_ConditionVariables.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Listing_19_10_ParallelSort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
