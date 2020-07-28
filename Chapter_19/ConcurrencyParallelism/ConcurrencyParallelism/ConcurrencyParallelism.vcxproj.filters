@@ -42,5 +42,8 @@
     <ClCompile Include="Listing_19_10_ParallelSort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Listing_19_16_parallelTransform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

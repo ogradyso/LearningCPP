@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{ad2939b2-6369-402f-9c2d-489cc4cfc7d3}</ProjectGuid>
-    <RootNamespace>ConcurrencyParallelism</RootNamespace>
+    <ProjectGuid>{848eee53-1f35-4e5b-9227-04e13295c228}</ProjectGuid>
+    <RootNamespace>Exercises</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -88,8 +88,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Program Files\boost_1_73_0</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -104,8 +102,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Program Files\boost_1_73_0</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -143,16 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ConcurrencyParallelism.cpp" />
-    <ClCompile Include="Factorize_parallel.cpp" />
-    <ClCompile Include="Factorize_serial.cpp" />
-    <ClCompile Include="Listing_19_10_ParallelSort.cpp" />
-    <ClCompile Include="Listing_19_10_SharingAndCoordinating.cpp" />
-    <ClCompile Include="Listing_19_11_Mutexes.cpp" />
-    <ClCompile Include="Listing_19_12_lockGuard.cpp" />
-    <ClCompile Include="Listing_19_13_Atomics.cpp" />
-    <ClCompile Include="Listing_19_14_ConditionVariables.cpp" />
-    <ClCompile Include="Listing_19_16_parallelTransform.cpp" />
+    <ClCompile Include="Ex_19_1_SpinLock.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
