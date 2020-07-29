@@ -15,10 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Ex_19_1_SpinLock.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Ex_19_3_ThreadSafeQueue.cpp">
+    <ClCompile Include="Listing_20_1_SteadyTimer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
