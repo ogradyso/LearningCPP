@@ -148,6 +148,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Listing_20_1_SteadyTimer.cpp" />
+    <ClCompile Include="Listing_20_2_ServerPortID.cpp" />
+    <ClCompile Include="Listing_20_3_ServerPortID_async_resolve.cpp" />
+    <ClCompile Include="Listing_20_4_Connecting.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
