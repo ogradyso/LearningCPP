@@ -148,6 +148,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Listing_20_10_HTTPClient.cpp" />
+    <ClCompile Include="Listing_20_11_AsyncHTTPClient.cpp" />
+    <ClCompile Include="Listing_20_12_HTTPServer.cpp" />
+    <ClCompile Include="Listing_20_14_AsyncHTTPServer.cpp" />
     <ClCompile Include="Listing_20_1_SteadyTimer.cpp" />
     <ClCompile Include="Listing_20_2_ServerPortID.cpp" />
     <ClCompile Include="Listing_20_3_ServerPortID_async_resolve.cpp" />
