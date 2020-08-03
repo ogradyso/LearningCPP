@@ -7,7 +7,7 @@
 //using namespace boost::asio;
 //
 //struct Session : std::enable_shared_from_this<Session> {
-//	explicit Session(ip::tcp::socket socket) : socket{ std::move(socket) }{}
+//	explicit Session(ip::udp::socket socket) : socket{ std::move(socket) }{}
 //
 //	void read() {
 //		async_read_until(socket, dynamic_buffer(message), '\n', [self = shared_from_this()](boost::system::error_code ec, std::size_t length){
@@ -24,12 +24,12 @@
 //		});
 //	}
 //private:
-//	ip::tcp::socket socket;
+//	ip::udp::socket socket;
 //	std::string message;
 //};
 //
-//void serve(ip::tcp::acceptor& acceptor) {
-//	acceptor.async_accept([&acceptor](boost::system::error_code ec, ip::tcp::socket socket) {
+//void serve(ip::udp::acceptor& acceptor) {
+//	acceptor.async_accept([&acceptor](boost::system::error_code ec, ip::udp::socket socket) {
 //		serve(acceptor);
 //		if (ec) return;
 //		auto session = std::make_shared<Session>(std::move(socket));
@@ -40,7 +40,7 @@
 //int main() {
 //	try {
 //		io_context io_context;
-//		ip::tcp::acceptor acceptor{ io_context, ip::tcp::endpoint(ip::tcp::v4(), 1895) };
+//		ip::udp::acceptor acceptor{ io_context, ip::udp::endpoint(ip::tcp::v4(), 1895) };
 //		serve(acceptor);
 //		io_context.run();
 //	}

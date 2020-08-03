@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{b24d6877-d215-4498-8639-a51f48a6de4e}</ProjectGuid>
-    <RootNamespace>NetworkingBoostAsio</RootNamespace>
+    <ProjectGuid>{4fe9115d-d594-4675-b5be-b5bf940634d7}</ProjectGuid>
+    <RootNamespace>Exercises</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -72,11 +72,9 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -147,17 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Listing_20_10_HTTPClient.cpp" />
-    <ClCompile Include="Listing_20_11_AsyncHTTPClient.cpp" />
-    <ClCompile Include="Listing_20_12_HTTPServer.cpp" />
-    <ClCompile Include="Listing_20_14_AsyncHTTPServer.cpp" />
-    <ClCompile Include="Listing_20_15_MultithreadHTTPServer.cpp" />
-    <ClCompile Include="Listing_20_1_SteadyTimer.cpp" />
-    <ClCompile Include="Listing_20_2_ServerPortID.cpp" />
-    <ClCompile Include="Listing_20_3_ServerPortID_async_resolve.cpp" />
-    <ClCompile Include="Listing_20_4_Connecting.cpp" />
-    <ClCompile Include="Listing_20_5_connectingAsync.cpp" />
-    <ClCompile Include="Listing_20_6_buffers.cpp" />
+    <ClCompile Include="Ex_20_1_UDP_HTTPServer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
