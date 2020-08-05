@@ -30,5 +30,14 @@
     <ClCompile Include="Listing_21_5_CommunicatingWithEnvironment_stdSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Listing_21_6_CommunicatingWithEnvironment_stdgetEnv.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Listing_21_7_ManagingOSSignals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Listing_21_8_HelpDialogforProgramOptions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
