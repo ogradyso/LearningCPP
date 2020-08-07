@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Listing_21_12_CommandLineParamParser.cpp" />
     <ClCompile Include="Listing_21_1_ProgramSupport.cpp" />
     <ClCompile Include="Listing_21_2_TerminationCallback.cpp" />
     <ClCompile Include="Listing_21_3_ExitingWithStdExit.cpp" />
