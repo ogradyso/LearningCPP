@@ -42,5 +42,8 @@
     <ClCompile Include="Listing_21_12_CommandLineParamParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Listing_21_17_FunctionLikeMacro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
