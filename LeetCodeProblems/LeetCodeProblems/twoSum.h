@@ -3,6 +3,7 @@
 #include "catch.h"
 #include <iostream>
 #include <vector>
+#include <map>
 
 using namespace::std;
 
@@ -33,27 +34,23 @@ public:
         return {};
     }
 
-    vector<int> twoSumDifferenceSearch(vector<int>& nums, int target) {
+    vector<int> twoSumHashMap(vector<int>& nums, int target) {
+        std::map<int, int> valDiffsDictionary;
         int difference;
-        int iterator;
-        int innerIterator;
-        iterator = 0;
-        while (iterator < nums.size())
+        for (int i = 0; i < nums.size(); i++)
         {
-            difference = target - nums[iterator];
-            innerIterator = iterator += 1;
-            while (innerIterator < nums.size())
+            difference = target - nums[i];
+            if (valDiffsDictionary.find(difference) != valDiffsDictionary.end())
             {
-                if (nums[innerIterator] = difference)
+                return { valDiffsDictionary[difference],i };
+            } 
+            else 
+            {
+                if (valDiffsDictionary.find(nums[i]) == valDiffsDictionary.end())
                 {
-                    return { iterator, innerIterator };
-                }
-                else
-                {
-                    innerIterator += 1;
+                    valDiffsDictionary.insert({ nums[i],i });
                 }
             }
-            iterator += 1;
         }
         return { };
     }
@@ -88,21 +85,21 @@ TEST_CASE("twoSumDifferenceSearch ") {
     SECTION("passess the initial example") {
         vector<int> nums1 = { 2, 7, 11, 15 };
         vector<int> answer1 = { 0,1 };
-        REQUIRE(mySolution.twoSumDifferenceSearch(nums1, 9) == answer1);
+        REQUIRE(mySolution.twoSumHashMap(nums1, 9) == answer1);
     }
     SECTION("returns empty vector if nums is empty") {
         vector<int> nums2;
         vector<int> answer2 = {  };
-        REQUIRE(mySolution.twoSumDifferenceSearch(nums2, 9) == answer2);
+        REQUIRE(mySolution.twoSumHashMap(nums2, 9) == answer2);
     }
     SECTION("works with unsorted vectors") {
         vector<int> nums3 = { 1,1,1,1,1,1,2,2,2,2,2,2,3,3,3,3,3,3,3,34,4,4,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5, };
         vector<int> answer3 = { 12,19 };
-        REQUIRE(mySolution.twoSumDifferenceSearch(nums3, 37) == answer3);
+        REQUIRE(mySolution.twoSumHashMap(nums3, 37) == answer3);
     }
     SECTION("twoSum with no answer") {
         vector<int> nums4 = { 1,1,1,1,1,1,2,2,2,2,2,2,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5, };
         vector<int> answer4 = {};
-        REQUIRE(mySolution.twoSumDifferenceSearch(nums4, 37) == answer4);
+        REQUIRE(mySolution.twoSumHashMap(nums4, 37) == answer4);
     }
 }

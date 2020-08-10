@@ -21,8 +21,8 @@ private:
     const std::chrono::time_point<std::chrono::high_resolution_clock> start;
 };
 
-//using namespace std;
-//
+using namespace std;
+
 //int main() {
 //    std::chrono::nanoseconds timeToSearch;
 //    {
@@ -48,6 +48,6 @@ private:
 //        auto totalTime_sec = timeToSearch.count();
 //        cout << "Indices: [" << answer[0] << "," << answer[1] << "]" << endl;
 //        printf("Difference search took %gms to complete.", totalTime_sec / 1.0e9);
-
+//
 //    }
 //}
