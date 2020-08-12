@@ -26,5 +26,8 @@
     <ClInclude Include="reverseInteger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="palindromeNumber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

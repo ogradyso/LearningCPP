@@ -9,8 +9,10 @@
 //#include "twoSum.h"
 //#include <vector>
 
-#include "reverseInteger.h"
-#include <limits.h>
+//#include "reverseInteger.h"
+//#include <limits.h>
+
+#include "palindromeNumber.h"
 
 ////timing for optimization:
 struct Stopwatch {
@@ -53,25 +55,39 @@ using namespace std;
 //        auto totalTime_sec = timeToSearch.count();
 //        cout << "Indices: [" << answer[0] << "," << answer[1] << "]" << endl;
 //        printf("Difference search took %gms to complete.", totalTime_sec / 1.0e9);
-
 //    }
 //}
 
 //ReverseInteger
-int main() {
-    std::chrono::nanoseconds timeToSearch;
-    {
-        int numberInput = 5306;
-        int answer{};
-        std::mt19937_64 mt_engine{ 91586 };
-        std::uniform_int_distribution<int> int_d{ INT_MIN,INT_MAX };
-        {
-            Stopwatch stopwatch{ timeToSearch };
-            answer = mySolution.reverseInteger(numberInput);
-        }
-        auto totalTime_sec = timeToSearch.count();
-        cout << "Answer: " << answer << endl;
-        printf("Brute force took %gms to complete.", totalTime_sec / 1.0e9);
+//int main() {
+//    std::chrono::nanoseconds timetosearch;
+//    {
+//        int numberinput{0};
+//        int answer{};
+//        {
+//            Stopwatch stopwatch{ timetosearch };
+//            answer = mySolution.reverseInteger(numberinput);
+//        }
+//        auto totaltime_sec = timetosearch.count();
+//        cout << "answer: " << answer << endl;
+//        printf("brute force took %gms to complete.", totaltime_sec / 1.0e9);
+//
+//    }
+//}
 
-    }
-}
+//PalindromeNumber
+//int main() {
+//    std::chrono::nanoseconds timetosearch;
+//        {
+//            int numberinput{0};
+//            int answer{};
+//            {
+//                Stopwatch stopwatch{ timetosearch };
+//                answer = mySolution.isPalindrome(numberinput);
+//            }
+//            auto totaltime_sec = timetosearch.count();
+//            cout << "answer: " << answer << endl;
+//            printf("brute force took %gms to complete.", totaltime_sec / 1.0e9);
+//    
+//        }
+//}

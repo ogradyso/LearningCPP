@@ -34,11 +34,25 @@ public:
         bool polarity = x > 0; 
         string numFrom = to_string(x);
         string numTo{};
-        char charToPush{};
-        charToPush = numFrom[numFrom.end()]
-        numTo.push_back(numFrom.end());
-
-        return{};
+        int newInt;
+        if (numFrom.empty()) return {};
+        while (numFrom.size() > 0)
+        {
+            numTo.push_back(numFrom.back());
+            numFrom.pop_back();
+        }
+        try
+        {
+            newInt = stoi(numTo);
+        }
+        catch (exception& e) {
+            return{ 0 };
+        }
+        if (!polarity) 
+        {
+            newInt = -1 * stoi(numTo);
+        }
+        return{newInt};
     }
 
 };
@@ -70,7 +84,7 @@ TEST_CASE("reverseInteger ") {
         int answer6 = {1111};
         REQUIRE(mySolution.reverseInteger(numberInput6) == answer6);
         int numberInput7 = { 202020 };
-        int answer7 = { 202020 };
+        int answer7 = { 20202 };
         REQUIRE(mySolution.reverseInteger(numberInput7) == answer7);
     }
     SECTION("returns 0 with overflow") {
