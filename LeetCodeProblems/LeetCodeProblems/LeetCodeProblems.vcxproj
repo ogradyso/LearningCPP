@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="palindromeNumber.h" />
     <ClInclude Include="reverseInteger.h" />
+    <ClInclude Include="RomanToInteger.h" />
     <ClInclude Include="twoSum.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
