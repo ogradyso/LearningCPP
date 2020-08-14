@@ -12,7 +12,9 @@
 //#include "reverseInteger.h"
 //#include <limits.h>
 
-#include "palindromeNumber.h"
+//#include "palindromeNumber.h"
+
+#include "RomanToInteger.h"
 
 ////timing for optimization:
 struct Stopwatch {
@@ -84,6 +86,23 @@ using namespace std;
 //            {
 //                Stopwatch stopwatch{ timetosearch };
 //                answer = mySolution.isPalindrome(numberinput);
+//            }
+//            auto totaltime_sec = timetosearch.count();
+//            cout << "answer: " << answer << endl;
+//            printf("brute force took %gms to complete.", totaltime_sec / 1.0e9);
+//    
+//        }
+//}
+
+//RomanToInteger
+//int main() {
+//    std::chrono::nanoseconds timetosearch;
+//        {
+//            std::string numberinput{"IV"};
+//            int answer{4};
+//            {
+//                Stopwatch stopwatch{ timetosearch };
+//                answer = mySolution.romanToInt(numberinput);
 //            }
 //            auto totaltime_sec = timetosearch.count();
 //            cout << "answer: " << answer << endl;

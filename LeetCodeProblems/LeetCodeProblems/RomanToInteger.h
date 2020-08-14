@@ -3,7 +3,7 @@
 #include "catch.h"
 
 // includes for Leet submission:
-
+#include <string>
 
 
 //Roman numerals are represented by seven different symbols : I, V, X, L, C, Dand M.
@@ -50,96 +50,83 @@
 
 class Solution {
 public:
-    bool isPalindrome(int x) {
-        int nextDigit;
-        int reversed = 0;
-        int copyX = x;
-        if (x >= 0)
+    int romanToInt(std::string s) {
+        char currentChar;
+        int totalVal = 0;
+        char lastChar = 'Z';
+
+        if (s.empty()) return {0};
+        while (!s.empty())
         {
-            while (x > 0)
-            {
-                nextDigit = x % 10;
-                x /= 10;
-                if (reversed > INT_MAX / 10 || (reversed == INT_MAX / 10 && nextDigit > 7)) return false;
-                if (reversed < INT_MIN / 10 || (reversed == INT_MIN / 10 && nextDigit < -8)) return false;
-                reversed = reversed * 10 + nextDigit;
+            currentChar = s.back();
+            if (currentChar == 'I') {
+                if (lastChar == 'V' || lastChar == 'X') {
+                    totalVal = totalVal - 1;
+                }
+                else {
+                    totalVal = totalVal + 1;
+                }
             }
-            if (copyX == reversed)
-            {
-                return true;
+            if (currentChar == 'V') totalVal = totalVal + 5;
+            if (currentChar == 'X') {
+                if (lastChar == 'L' || lastChar == 'C') {
+                    totalVal = totalVal - 10;
+                }
+                else {
+                    totalVal = totalVal + 10;
+                }
             }
-            else
-            {
-                return false;
+            if (currentChar == 'L') totalVal = totalVal + 50;
+            if (currentChar == 'C') {
+                if (lastChar == 'D' || lastChar == 'M') {
+                    totalVal = totalVal - 100;
+                }
+                else {
+                    totalVal = totalVal + 100;
+                }
             }
+            if (currentChar == 'D') totalVal = totalVal + 500;
+            if (currentChar == 'M') totalVal = totalVal + 1000;
+            lastChar = currentChar;
+            s.pop_back();
         }
-        return { false };
-    }
-    bool isPalindromeLeetAnswer(int x) {
-        if (x < 0 || (x % 10 == 0 && x != 0)) return false;
-        int reversed = 0;
-        while (x > reversed)
-        {
-            reversed = reversed * 10 + x % 10;
-            x /= 10;
-        }
-        if (x == reversed || x == (reversed /= 10)) {
-            return{ true };
-        }
-        else {
-            return { false };
-        }
+        return{totalVal};
+    //I can be placed before V(5) and X(10) to make 4 and 9.
+    //X can be placed before L(50) and C(100) to make 40 and 90.
+    //C can be placed before D(500) and M(1000) to make 400 and 900.
     }
 
 };
 
 Solution mySolution{};
 
-TEST_CASE("isPalindrome ") {
+TEST_CASE("romanToInt ") {
     SECTION("passess the initial examples") {
-        int numberInput1{ 121 };
-        bool answer1{ true };
-        REQUIRE(mySolution.isPalindromeLeetAnswer(numberInput1) == answer1);
-        int numberInput2{ -121 };
-        bool answer2{ false };
-        REQUIRE(mySolution.isPalindromeLeetAnswer(numberInput2) == answer2);
-        int numberInput3{ 10 };
-        bool answer3{ false };
-        REQUIRE(mySolution.isPalindromeLeetAnswer(numberInput3) == answer3);
+        std::string numberInput1{ "III" };
+        int answer1{ 3 };
+        REQUIRE(mySolution.romanToInt(numberInput1) == answer1);
+        std::string numberInput2{ "IV" };
+        int answer2{ 4 };
+        REQUIRE(mySolution.romanToInt(numberInput2) == answer2);
+        std::string numberInput3{ "IX" };
+        int answer3{ 9 };
+        REQUIRE(mySolution.romanToInt(numberInput3) == answer3);
+        std::string numberInput4{ "LVIII" };
+        int answer4{ 58 };
+        REQUIRE(mySolution.romanToInt(numberInput4) == answer4);
+        std::string numberInput5{ "MCMXCIV" };
+        int answer5{ 1994 };
+        REQUIRE(mySolution.romanToInt(numberInput5) == answer5);
+        std::string numberInput7{ "MMMCDLXXXII" };
+        int answer7{ 3482 };
+        REQUIRE(mySolution.romanToInt(numberInput7) == answer7);
+        std::string numberInput8{ "MMMMDLXI" };
+        int answer8{ 4561 };
+        REQUIRE(mySolution.romanToInt(numberInput8) == answer8);
     }
     SECTION("returns empty vector if nums is empty") {
-        int numberInput4{ 0 };
-        bool answer4 = { true };
-        REQUIRE(mySolution.isPalindromeLeetAnswer(numberInput4) == answer4);
-        int numberInput5{};
-        int answer5 = { true };
-        REQUIRE(mySolution.isPalindromeLeetAnswer(numberInput5) == answer5);
-    }
-    SECTION("works with integer consisting of the same number or a pattern") {
-        int numberInput6 = { 1111 };
-        bool answer6 = { true };
-        REQUIRE(mySolution.isPalindromeLeetAnswer(numberInput6) == answer6);
-        int numberInput7 = { 202020 };
-        bool answer7 = { false };
-        REQUIRE(mySolution.isPalindromeLeetAnswer(numberInput7) == answer7);
-    }
-    SECTION("works with odd numbers") {
-        int numberInput6 = { 32123 };
-        bool answer6 = { true };
-        REQUIRE(mySolution.isPalindromeLeetAnswer(numberInput6) == answer6);
-        int numberInput7 = { 321123 };
-        bool answer7 = { true };
-        REQUIRE(mySolution.isPalindromeLeetAnswer(numberInput7) == answer7);
-        int numberInput8 = { 320023 };
-        bool answer8 = { true };
-        REQUIRE(mySolution.isPalindromeLeetAnswer(numberInput8) == answer8);
-    }
-    SECTION("returns false with overflow") {
-        int numberInput8 = { 1'463'847'422 };
-        int answer8 = { false };
-        REQUIRE(mySolution.isPalindromeLeetAnswer(numberInput8) == answer8);
-        int numberInput9 = { -1'463'847'422 };
-        int answer9 = { false };
-        REQUIRE(mySolution.isPalindromeLeetAnswer(numberInput9) == answer9);
+        std::string numberInput6{};
+        int answer6 = { 0 };
+        REQUIRE(mySolution.romanToInt(numberInput6) == answer6);
     }
 }
