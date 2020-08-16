@@ -14,7 +14,11 @@
 
 //#include "palindromeNumber.h"
 
-#include "RomanToInteger.h"
+//#include "RomanToInteger.h"
+
+//#include "longestPrefix.h"
+
+#include "validParentheses.h"
 
 ////timing for optimization:
 struct Stopwatch {
@@ -109,4 +113,18 @@ using namespace std;
 //            printf("brute force took %gms to complete.", totaltime_sec / 1.0e9);
 //    
 //        }
+//}
+
+//LongestPrefix
+//int main() {
+//    std::vector<std::string> strVectorInput7{ "c", "c" };
+//    std::string answer7{ "c" };
+//    mySolution.longestCommonPrefix(strVectorInput7);
+//}
+
+//validParentheses
+//int main() {
+//    std::string input1{ "()" };
+//    bool answer1{ true };
+//    std::cout << (mySolution.isValid(input1) == answer1);
 //}

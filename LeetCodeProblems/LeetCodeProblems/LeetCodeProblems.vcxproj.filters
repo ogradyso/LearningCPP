@@ -32,5 +32,11 @@
     <ClInclude Include="RomanToInteger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="longestPrefix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="validParentheses.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

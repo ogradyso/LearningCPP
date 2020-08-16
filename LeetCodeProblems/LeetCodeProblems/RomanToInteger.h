@@ -98,35 +98,35 @@ public:
 
 };
 
-Solution mySolution{};
-
-TEST_CASE("romanToInt ") {
-    SECTION("passess the initial examples") {
-        std::string numberInput1{ "III" };
-        int answer1{ 3 };
-        REQUIRE(mySolution.romanToInt(numberInput1) == answer1);
-        std::string numberInput2{ "IV" };
-        int answer2{ 4 };
-        REQUIRE(mySolution.romanToInt(numberInput2) == answer2);
-        std::string numberInput3{ "IX" };
-        int answer3{ 9 };
-        REQUIRE(mySolution.romanToInt(numberInput3) == answer3);
-        std::string numberInput4{ "LVIII" };
-        int answer4{ 58 };
-        REQUIRE(mySolution.romanToInt(numberInput4) == answer4);
-        std::string numberInput5{ "MCMXCIV" };
-        int answer5{ 1994 };
-        REQUIRE(mySolution.romanToInt(numberInput5) == answer5);
-        std::string numberInput7{ "MMMCDLXXXII" };
-        int answer7{ 3482 };
-        REQUIRE(mySolution.romanToInt(numberInput7) == answer7);
-        std::string numberInput8{ "MMMMDLXI" };
-        int answer8{ 4561 };
-        REQUIRE(mySolution.romanToInt(numberInput8) == answer8);
-    }
-    SECTION("returns empty vector if nums is empty") {
-        std::string numberInput6{};
-        int answer6 = { 0 };
-        REQUIRE(mySolution.romanToInt(numberInput6) == answer6);
-    }
-}
+//Solution mySolution{};
+//
+//TEST_CASE("romanToInt ") {
+//    SECTION("passess the initial examples") {
+//        std::string numberInput1{ "III" };
+//        int answer1{ 3 };
+//        REQUIRE(mySolution.romanToInt(numberInput1) == answer1);
+//        std::string numberInput2{ "IV" };
+//        int answer2{ 4 };
+//        REQUIRE(mySolution.romanToInt(numberInput2) == answer2);
+//        std::string numberInput3{ "IX" };
+//        int answer3{ 9 };
+//        REQUIRE(mySolution.romanToInt(numberInput3) == answer3);
+//        std::string numberInput4{ "LVIII" };
+//        int answer4{ 58 };
+//        REQUIRE(mySolution.romanToInt(numberInput4) == answer4);
+//        std::string numberInput5{ "MCMXCIV" };
+//        int answer5{ 1994 };
+//        REQUIRE(mySolution.romanToInt(numberInput5) == answer5);
+//        std::string numberInput7{ "MMMCDLXXXII" };
+//        int answer7{ 3482 };
+//        REQUIRE(mySolution.romanToInt(numberInput7) == answer7);
+//        std::string numberInput8{ "MMMMDLXI" };
+//        int answer8{ 4561 };
+//        REQUIRE(mySolution.romanToInt(numberInput8) == answer8);
+//    }
+//    SECTION("returns empty vector if nums is empty") {
+//        std::string numberInput6{};
+//        int answer6 = { 0 };
+//        REQUIRE(mySolution.romanToInt(numberInput6) == answer6);
+//    }
+//}
