@@ -38,5 +38,11 @@
     <ClInclude Include="validParentheses.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MergeLinkedLists.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="removeDuplicates.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

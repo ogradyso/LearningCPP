@@ -18,7 +18,11 @@
 
 //#include "longestPrefix.h"
 
-#include "validParentheses.h"
+//#include "validParentheses.h"
+
+//#include "MergeLinkedLists.h"
+
+#include "removeDuplicates.h"
 
 ////timing for optimization:
 struct Stopwatch {
@@ -127,4 +131,27 @@ using namespace std;
 //    std::string input1{ "()" };
 //    bool answer1{ true };
 //    std::cout << (mySolution.isValid(input1) == answer1);
+//}
+
+//mergeTwoLists
+//int main() {
+//    ListNode input13{ 4 };
+//    ListNode input12{ 2, &input13 };
+//    ListNode input11{ 1, &input12 };
+//    ListNode input23{ 4 };
+//    ListNode input22{ 3, &input23 };
+//    ListNode input21{ 1, &input22 };
+//    ListNode* answer1 = mySolution.mergeTwoLists(&input11, &input21);
+//    while (answer1->next != nullptr) {
+//        answer1 = answer1->next;
+//        std::cout << answer1->val << endl;
+//    }
+//}
+
+//removeDuplicates
+//#include <vector>
+//int main() {
+//    vector<int> nums1 = { 1,1,2 };
+//    int answer1 = { 2 };
+//    mySolution.removeDuplicates(nums1) == answer1;
 //}
