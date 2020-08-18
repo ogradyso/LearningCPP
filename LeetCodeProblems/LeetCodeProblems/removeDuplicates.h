@@ -40,16 +40,35 @@
 
 class Solution {
 public:
-    int removeDuplicates(std::vector<int>& nums) {
+    int removeDuplicates_submitted(std::vector<int>& nums) {
         std::vector<int>::iterator numsIter = nums.begin();
-        for (size_t i = 0; i < nums.size(); i++) {
-            if (i != 0 && nums[i] == nums[i- 1]) {
-                nums.erase(numsIter);
-            }
+        std::vector<int>::iterator numToErase = nums.begin();
+        for (size_t i = 1; i < nums.size(); i++) {
             numsIter++;
+            if (nums[i] == nums[i- 1]) {
+                numToErase = numsIter;
+                numsIter--;
+                i--;
+                nums.erase(numToErase);
+            }
         }
         int arrSize = nums.size();
         return {arrSize};
+    }
+    int removeDuplicates_unique(std::vector<int>& nums) {
+        nums.erase(std::unique(nums.begin(), nums.end()), nums.end());
+        return nums.size();
+    }
+    int removeDuplicates(std::vector<int>& nums) {
+        if (nums.size() == 0) return 0;
+        int i = 0;
+        for (int j = 1; j < nums.size(); j++) {
+            if (nums[j] != nums[i]) {
+                i++;
+                nums[i] = nums[j];
+            }
+        }
+        return i + 1;
     }
 };
 

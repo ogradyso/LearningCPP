@@ -22,7 +22,9 @@
 
 //#include "MergeLinkedLists.h"
 
-#include "removeDuplicates.h"
+//#include "removeDuplicates.h"
+
+#include "removeElement.h"
 
 ////timing for optimization:
 struct Stopwatch {
@@ -151,7 +153,19 @@ using namespace std;
 //removeDuplicates
 //#include <vector>
 //int main() {
-//    vector<int> nums1 = { 1,1,2 };
+//    /*vector<int> nums1 = { 1,1,2 };
 //    int answer1 = { 2 };
-//    mySolution.removeDuplicates(nums1) == answer1;
+//    mySolution.removeDuplicates(nums1) == answer1;*/
+//    std::vector<int> nums2 = { 0,0,1,1,1,2,2,3,3,4 };
+//    int answer2 = { 5 };
+//    mySolution.removeDuplicates(nums2) == answer2;
 //}
+
+//removeElement
+#include <vector>
+int main() {
+    std::vector<int> nums1 = { 3,2,2,3 };
+    int val = { 3 };
+    int answer1 = { 2 };
+    mySolution.removeElement(nums1, val) == answer1;
+}

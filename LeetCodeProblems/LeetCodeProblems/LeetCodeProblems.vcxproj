@@ -150,6 +150,7 @@
     <ClInclude Include="MergeLinkedLists.h" />
     <ClInclude Include="palindromeNumber.h" />
     <ClInclude Include="removeDuplicates.h" />
+    <ClInclude Include="removeElement.h" />
     <ClInclude Include="reverseInteger.h" />
     <ClInclude Include="RomanToInteger.h" />
     <ClInclude Include="twoSum.h" />
