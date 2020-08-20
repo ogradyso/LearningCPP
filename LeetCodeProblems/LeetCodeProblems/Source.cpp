@@ -162,10 +162,10 @@ using namespace std;
 //}
 
 //removeElement
-#include <vector>
-int main() {
-    std::vector<int> nums1 = { 3,2,2,3 };
-    int val = { 3 };
-    int answer1 = { 2 };
-    mySolution.removeElement(nums1, val) == answer1;
-}
+//#include <vector>
+//int main() {
+//    std::vector<int> nums4 = { 2,2, 3 };
+//    int answer4 = { 1 };
+//    int val4 = { 2 };
+//    mySolution.removeElement(nums4, val4) == answer4;
+//}

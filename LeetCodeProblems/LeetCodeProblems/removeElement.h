@@ -48,14 +48,23 @@ public:
     int removeElement(vector<int>& nums, int val) {
         std::vector<int>::iterator numsIter = nums.begin();
         std::vector<int>::iterator numToErase = nums.begin();
-        for (size_t i = 0; i < nums.size(); i++) {
+        int i = 0;
+        while (i < nums.size()) {
+            numToErase = numsIter;
             if (nums[i] == val) {
-                numToErase = numsIter;
-                if (numsIter != nums.end()) {
-                    numsIter++;
-                }
                 nums.erase(numToErase);
+                numsIter = nums.begin();
+                i = 0;
             }
+            else
+            {
+                numsIter++;
+                i++;
+            };
+        }
+        if (nums.size() == 1 && nums[0] == val) {
+            numsIter = nums.begin();
+            nums.erase(numsIter);
         }
         return nums.size();
     }
@@ -74,6 +83,14 @@ TEST_CASE("removeDuplicates ") {
         int answer2 = { 5 };
         int val2 = { 2 };
         REQUIRE(mySolution.removeElement(nums2,val2) == answer2);
+        std::vector<int> nums3 = { 3, 3 };
+        int answer3 = {  };
+        int val3 = { 3 };
+        REQUIRE(mySolution.removeElement(nums3, val3) == answer3);
+        std::vector<int> nums4 = { 2,2, 3 };
+        int answer4 = { 1 };
+        int val4 = { 2 };
+        REQUIRE(mySolution.removeElement(nums4, val4) == answer4);
     }
     SECTION("empty vector") {
         std::vector<int> nums3 = { };
