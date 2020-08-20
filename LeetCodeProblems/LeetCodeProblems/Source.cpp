@@ -24,7 +24,9 @@
 
 //#include "removeDuplicates.h"
 
-#include "removeElement.h"
+//#include "removeElement.h"
+
+#include "strStr.h"
 
 ////timing for optimization:
 struct Stopwatch {
