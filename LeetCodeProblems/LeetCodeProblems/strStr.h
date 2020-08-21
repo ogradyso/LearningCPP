@@ -2,6 +2,7 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.h"
 #include <string>
+#include <limits>
 
 //Implement strStr().
 //
@@ -31,8 +32,9 @@ using namespace std;
 class Solution {
 public:
     int strStr(string haystack, string needle) {
-
-        return {5};
+        size_t foundIndex = haystack.find(needle);
+        int retVal = static_cast<int>(foundIndex);
+        return {retVal};
     }
 };
 
@@ -45,8 +47,21 @@ TEST_CASE("removeDuplicates ") {
         std::string needle{ "ll" };
         int answer{2};
         REQUIRE(mySolution.strStr(haystack, needle) == answer);
-    }
-    SECTION("empty vector") {
-       
+        std::string haystack2{ "aaaaa" };
+        std::string needle2{ "bba" };
+        int answer2{ -1 };
+        REQUIRE(mySolution.strStr(haystack2, needle2) == answer2);
+        std::string haystack3{ "empty needle" };
+        std::string needle3{ "" };
+        int answer3{ 0 };
+        REQUIRE(mySolution.strStr(haystack3, needle3) == answer3);
+        std::string haystack4{ "empty needle" };
+        std::string needle4{ "nee" };
+        int answer4{ 6 };
+        REQUIRE(mySolution.strStr(haystack4, needle4) == answer4);
+        std::string haystack5{ "" };
+        std::string needle5{ "nee" };
+        int answer5{ -1 };
+        REQUIRE(mySolution.strStr(haystack5, needle5) == answer5);
     }
 }
