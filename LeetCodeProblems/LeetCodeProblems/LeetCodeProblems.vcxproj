@@ -146,6 +146,7 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="countAndSay.h" />
     <ClInclude Include="longestPrefix.h" />
     <ClInclude Include="MergeLinkedLists.h" />
     <ClInclude Include="palindromeNumber.h" />
@@ -153,6 +154,7 @@
     <ClInclude Include="removeElement.h" />
     <ClInclude Include="reverseInteger.h" />
     <ClInclude Include="RomanToInteger.h" />
+    <ClInclude Include="searchInsert.h" />
     <ClInclude Include="strStr.h" />
     <ClInclude Include="twoSum.h" />
     <ClInclude Include="validParentheses.h" />

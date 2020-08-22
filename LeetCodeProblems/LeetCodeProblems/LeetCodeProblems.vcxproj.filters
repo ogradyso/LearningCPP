@@ -50,5 +50,11 @@
     <ClInclude Include="strStr.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="searchInsert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="countAndSay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

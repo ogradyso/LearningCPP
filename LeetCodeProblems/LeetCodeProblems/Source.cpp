@@ -26,7 +26,11 @@
 
 //#include "removeElement.h"
 
-#include "strStr.h"
+//#include "strStr.h"
+
+//#include "searchInsert.h"
+
+#include "countAndSay.h"
 
 ////timing for optimization:
 struct Stopwatch {
