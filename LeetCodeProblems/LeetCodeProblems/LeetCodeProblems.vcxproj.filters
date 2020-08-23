@@ -56,5 +56,8 @@
     <ClInclude Include="countAndSay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="maxSubArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

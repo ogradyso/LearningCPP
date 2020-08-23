@@ -30,7 +30,9 @@
 
 //#include "searchInsert.h"
 
-#include "countAndSay.h"
+//#include "countAndSay.h"
+
+#include "maxSubArray.h"
 
 ////timing for optimization:
 struct Stopwatch {
@@ -170,8 +172,7 @@ using namespace std;
 //removeElement
 //#include <vector>
 //int main() {
-//    std::vector<int> nums4 = { 2,2, 3 };
-//    int answer4 = { 1 };
-//    int val4 = { 2 };
-//    mySolution.removeElement(nums4, val4) == answer4;
+//int input4{ 4 };
+//std::string answer4{ "1211" };
+//mySolution.countAndSay(input4) == answer4;
 //}

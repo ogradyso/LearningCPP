@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="countAndSay.h" />
     <ClInclude Include="longestPrefix.h" />
+    <ClInclude Include="maxSubArray.h" />
     <ClInclude Include="MergeLinkedLists.h" />
     <ClInclude Include="palindromeNumber.h" />
     <ClInclude Include="removeDuplicates.h" />

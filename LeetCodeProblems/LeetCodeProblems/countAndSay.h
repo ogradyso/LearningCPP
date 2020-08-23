@@ -38,7 +38,41 @@ using namespace std;
 class Solution {
 public:
     string countAndSay(int n) {
-        return {};
+        if (n <= 0) return "0";
+        if (n == 1) return "1";
+        string previousStr = countAndSay(n - 1);
+        string currentStr{};
+        int strIterator{ 0 };
+        int currentNum = { 0 };
+        size_t strEnd = previousStr.size();
+        while (strIterator != strEnd) {
+            int count{ 0 };
+            
+            while (previousStr[strIterator] == previousStr[currentNum]) {
+                if (strIterator != strEnd) {
+                    count++;
+                    strIterator++;
+                }
+            }
+            currentStr += std::to_string(count);
+
+            strIterator--;
+            currentStr += previousStr[strIterator];
+            strIterator++;
+            currentNum = strIterator;
+        }
+        return {currentStr};
+        /*if (n == 1) return "1";
+        if (n == 2)  return "11";
+        string s = countAndSay(n - 1), res = "";
+        int i = 0;
+        while (i < s.size()) {
+            int j = i;
+            while (j < s.size() and s[j] == s[i]) j++;
+            res += to_string(j - i) + s[i];
+            i = j;
+        }
+        return res;*/
     }
 };
 
@@ -50,5 +84,37 @@ TEST_CASE("searchInsert ") {
         int input{ 1 };
         std::string answer{ "1" };
         REQUIRE(mySolution.countAndSay(input) == answer);
+        int input2{ 2 };
+        std::string answer2{ "11" };
+        REQUIRE(mySolution.countAndSay(input2) == answer2);
+        int input3{ 3 };
+        std::string answer3{ "21" };
+        REQUIRE(mySolution.countAndSay(input3) == answer3);
+        int input4{ 4 };
+        std::string answer4{ "1211" };
+        REQUIRE(mySolution.countAndSay(input4) == answer4);
+        int input5{ 5 };
+        std::string answer5{ "111221" };
+        REQUIRE(mySolution.countAndSay(input5) == answer5);
+        int input6{ 6 };
+        std::string answer6{ "312211" };
+        REQUIRE(mySolution.countAndSay(input6) == answer6);
+        int input7{ 7 };
+        std::string answer7{ "13112221" };
+        REQUIRE(mySolution.countAndSay(input7) == answer7);
+        int input8{ 8 };
+        std::string answer8{ "1113213211" };
+        REQUIRE(mySolution.countAndSay(input8) == answer8);
+        int input9{ 9 };
+        std::string answer9{ "31131211131221" };
+        REQUIRE(mySolution.countAndSay(input9) == answer9);
+        int input10{ 10 };
+        std::string answer10{ "13211311123113112211" };
+        REQUIRE(mySolution.countAndSay(input10) == answer10);
+        int input11{ 11 };
+        std::string answer11{ "11131221133112132113212221" };
+        REQUIRE(mySolution.countAndSay(input11) == answer11);
+
     }
 }
+
