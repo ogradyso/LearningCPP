@@ -13,10 +13,24 @@
 //
 //If you have figured out the O(n) solution, try coding another solution using the divideand conquer approach, which is more subtle.
 
+#include <numeric>
 using namespace std;
+
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
+        int sumAll = accumulate(nums.begin(), nums.end(), 0);
+        int leftSubArray = maxSubArray();
+        int rightSubArray = maxSubArray();
+        if (sumAll >= leftSubArray && sumAll >= rightSubArray) {
+            return sumAll;
+        }
+        else if (leftSubArray > rightSubArray){
+            return leftSubArray;
+        }
+        else if (rightSubArray > leftSubArray) {
+            return rightSubArray;
+        }
         return {};
     }
 };
