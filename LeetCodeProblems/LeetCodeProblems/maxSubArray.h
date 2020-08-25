@@ -19,19 +19,20 @@ using namespace std;
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
-        int sumAll = accumulate(nums.begin(), nums.end(), 0);
-        int leftSubArray = maxSubArray();
-        int rightSubArray = maxSubArray();
-        if (sumAll >= leftSubArray && sumAll >= rightSubArray) {
-            return sumAll;
+        int absMax = INT_MIN;
+        int max_to_i = 0;
+
+        if (nums.size() == 0) return 0;
+        for (int i = 0; i < nums.size(); i++)
+        {
+            max_to_i = max_to_i + nums[i];
+            if (absMax < max_to_i)
+                absMax = max_to_i;
+
+            if (max_to_i < 0)
+                max_to_i = 0;
         }
-        else if (leftSubArray > rightSubArray){
-            return leftSubArray;
-        }
-        else if (rightSubArray > leftSubArray) {
-            return rightSubArray;
-        }
-        return {};
+        return absMax;
     }
 };
 
@@ -43,6 +44,22 @@ TEST_CASE("searchInsert ") {
         std::vector<int> input{ -2, 1, -3, 4, -1, 2, 1, -5, 4 };
         int answer{ 6 };
         REQUIRE(mySolution.maxSubArray(input) == answer);
+    }
+    
+    SECTION("passess the initial examples") {
+        std::vector<int> input2{  };
+        int answer2{ 0 };
+        REQUIRE(mySolution.maxSubArray(input2) == answer2);
+    }
 
+    SECTION("passess the initial examples") {
+        std::vector<int> input3{ 1,0,0,-2,0,0,3 };
+        int answer3{ 3 };
+        REQUIRE(mySolution.maxSubArray(input3) == answer3);
+    }
+    SECTION("passess the initial examples") {
+        std::vector<int> input4{ 1,0,0,-2,0,0,1 };
+        int answer4{ 1 };
+        REQUIRE(mySolution.maxSubArray(input4) == answer4);
     }
 }

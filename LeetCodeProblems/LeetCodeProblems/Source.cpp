@@ -32,7 +32,9 @@
 
 //#include "countAndSay.h"
 
-#include "maxSubArray.h"
+//#include "maxSubArray.h"
+
+#include "lengthOfLastWord.h"
 
 ////timing for optimization:
 struct Stopwatch {
@@ -176,3 +178,10 @@ using namespace std;
 //std::string answer4{ "1211" };
 //mySolution.countAndSay(input4) == answer4;
 //}
+
+//LengthOfLastWord
+int main() {
+    std::string input{ "Hello World!" };
+    int answer{ 5 };
+    mySolution.lengthOfLastWord(input) == answer;
+}
