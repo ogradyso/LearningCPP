@@ -180,8 +180,8 @@ using namespace std;
 //}
 
 //LengthOfLastWord
-int main() {
-    std::string input{ "Hello World!" };
-    int answer{ 5 };
-    mySolution.lengthOfLastWord(input) == answer;
-}
+//int main() {
+//    std::string input{ "Hello World!" };
+//    int answer{ 5 };
+//    mySolution.lengthOfLastWord(input) == answer;
+//}
