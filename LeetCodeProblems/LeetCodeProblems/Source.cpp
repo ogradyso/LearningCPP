@@ -181,7 +181,11 @@ using namespace std;
 
 //LengthOfLastWord
 //int main() {
-//    std::string input{ "Hello World!" };
-//    int answer{ 5 };
-//    mySolution.lengthOfLastWord(input) == answer;
+//    /*std::string input4{ "When I was a young warthog" };
+//    int answer4{ 7 };
+//    mySolution.lengthOfLastWord(input4) == answer4;*/
+//
+//    std::string input8{ "   " };
+//    int answer8{ 0 };
+//    mySolution.lengthOfLastWord(input8) == answer8;
 //}
