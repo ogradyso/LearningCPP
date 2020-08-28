@@ -179,13 +179,12 @@ using namespace std;
 //mySolution.countAndSay(input4) == answer4;
 //}
 
-//LengthOfLastWord
+////LengthOfLastWord
 //int main() {
-//    /*std::string input4{ "When I was a young warthog" };
+//    /*std::string input4{ "this is a test" };
 //    int answer4{ 7 };
 //    mySolution.lengthOfLastWord(input4) == answer4;*/
-//
-//    std::string input8{ "   " };
-//    int answer8{ 0 };
-//    mySolution.lengthOfLastWord(input8) == answer8;
+//    std::string input{ "a " };
+//    int answer{ 5 };
+//    cout << mySolution.lengthOfLastWord(input) ;
 //}

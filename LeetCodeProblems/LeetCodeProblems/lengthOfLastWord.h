@@ -20,20 +20,31 @@ class Solution {
 public:
     int lengthOfLastWord(string s) {
         if (s.size() == 0) return{0};
-        regex pat{ R"(\s+(\w+))" };
+        regex pat{ R"(\s*(\w+))" };
         sregex_iterator p(s.begin(), s.end(), pat);
         string lastWord;
         while (p != sregex_iterator{}) {
             lastWord = (*p)[0];
             p++;
         }
-        if (lastWord.empty() && s[0] != ' ' && s[s.length()] != ' ') {
-            return{ static_cast<int>(s.size()) };
+        if (lastWord.empty() ) {
+            lastWord = s;
         }
-        else if (s[0] == ' ' && s[s.length()-1] == ' ') {
-            return {0};
+        if (!lastWord.empty()) {
+            while (!isalnum(lastWord[0]) && !lastWord.empty()) {
+                lastWord.erase(lastWord.begin());
+            }
         }
-        return { static_cast<int>(lastWord.size()-1) };
+        if (!lastWord.empty()) {
+            while (!isalnum(lastWord[lastWord.size() - 1]) && !lastWord.empty()) {
+                lastWord.pop_back();
+            }
+        }
+        return { static_cast<int>(lastWord.size()) };
+        /*string ans;
+        stringstream a(s);
+        while (a >> ans);
+        return ans.length();*/
     }
 };
 
@@ -85,7 +96,22 @@ TEST_CASE("searchInsert ") {
     }
     SECTION("passess the initial examples") {
         std::string input9{ "a " };
-        int answer9{ 0 };
+        int answer9{ 1 };
         REQUIRE(mySolution.lengthOfLastWord(input9) == answer9);
+    }
+    SECTION("passess the initial examples") {
+        std::string input11{ "a  " };
+        int answer11{ 1 };
+        REQUIRE(mySolution.lengthOfLastWord(input11) == answer11);
+    }    
+    SECTION("passess the initial examples") {
+        std::string input10{ " a" };
+        int answer10{ 1 };
+        REQUIRE(mySolution.lengthOfLastWord(input10) == answer10);
+    }
+    SECTION("passess the initial examples") {
+        std::string input12{ "   a" };
+        int answer12{ 1 };
+        REQUIRE(mySolution.lengthOfLastWord(input12) == answer12);
     }
 }
