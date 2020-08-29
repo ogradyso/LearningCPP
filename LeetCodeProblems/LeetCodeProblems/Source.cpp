@@ -34,7 +34,9 @@
 
 //#include "maxSubArray.h"
 
-#include "lengthOfLastWord.h"
+//#include "lengthOfLastWord.h"
+
+#include "plusOne.h"
 
 ////timing for optimization:
 struct Stopwatch {

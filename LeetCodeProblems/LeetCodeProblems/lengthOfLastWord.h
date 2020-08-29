@@ -19,7 +19,7 @@ using namespace std;
 class Solution {
 public:
     int lengthOfLastWord(string s) {
-        if (s.size() == 0) return{0};
+        /*if (s.size() == 0) return{0};
         regex pat{ R"(\s*(\w+))" };
         sregex_iterator p(s.begin(), s.end(), pat);
         string lastWord;
@@ -40,11 +40,19 @@ public:
                 lastWord.pop_back();
             }
         }
-        return { static_cast<int>(lastWord.size()) };
+        return { static_cast<int>(lastWord.size()) };*/
         /*string ans;
         stringstream a(s);
         while (a >> ans);
         return ans.length();*/
+        int n = s.size();
+        int c = 0;
+        for (int i = n - 1; i >= 0;) {
+            if (s[i] == ' ' && c == 0)i--;
+            else if (s[i] == ' ' && c != 0)break;
+            else { c++; i--; }
+        }
+        return c;
     }
 };
 
