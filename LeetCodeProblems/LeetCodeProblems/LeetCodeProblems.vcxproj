@@ -146,6 +146,7 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="addBinary.h" />
     <ClInclude Include="countAndSay.h" />
     <ClInclude Include="lengthOfLastWord.h" />
     <ClInclude Include="longestPrefix.h" />

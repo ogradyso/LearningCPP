@@ -36,7 +36,9 @@
 
 //#include "lengthOfLastWord.h"
 
-#include "plusOne.h"
+//#include "plusOne.h"
+
+#include "addBinary.h"
 
 ////timing for optimization:
 struct Stopwatch {
@@ -190,3 +192,11 @@ using namespace std;
 //    int answer{ 5 };
 //    cout << mySolution.lengthOfLastWord(input) ;
 //}
+
+//addBinary
+int main() {
+    std::string input_a2{ "1010" };
+    std::string input_b2{ "1011" };
+    std::string answer2{ "10101" };
+    mySolution.addBinary(input_a2, input_b2) == answer2;
+}
