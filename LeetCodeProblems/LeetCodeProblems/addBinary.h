@@ -27,14 +27,51 @@ using namespace std;
 class Solution {
 public:
     string addBinary(string a, string b) {
-        if (a == "1" && b == "1") {
-            return "10";
-        } else if ((a == "0" && b == "1") || (a == "1" && b == "0")) {
-            return "1";
+        if (a.empty()) return b;
+        if (b.empty()) return a;
+        auto a_cursor = a.end();
+        a_cursor--;
+        while (!b.empty()) {
+            auto b_cursor = b.back();
+            if (b_cursor == '1') {
+                if (*a_cursor == '1') {
+                    *a_cursor = '0';
+                    auto a_next = a_cursor;
+                    if (a_next != a.begin()) {
+                        a_next--;
+                        if (*a_next == '0') {
+                            *a_next = '1';
+                        }
+                        else {
+                            while (*a_next == '1' && a_next != a.begin()) {
+                                *a_next = '0';
+                                a_next--;
+                            }
+                            if (a_next == a.begin()) {
+                                if (*a_next == '1') {
+                                    *a_next = '0';
+                                    a.insert(0, "1");
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        a.insert(0, "1");
+                    }
+                }
+                else if (a_cursor == a.begin() && a.size() != 1) {
+                    a.insert(0, "1");
+                }
+                else {
+                    *a_cursor = '1';
+                }
+            }
+            if (a_cursor != a.begin()) {
+                a_cursor--;
+            }
+            b.pop_back();
         }
-        else {
-            
-        }
+        return a;
     }
 };
 
