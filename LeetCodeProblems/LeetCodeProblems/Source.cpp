@@ -194,9 +194,9 @@ using namespace std;
 //}
 
 //addBinary
-int main() {
-    std::string input_a2{ "11" };
-    std::string input_b2{ "1" };
-    std::string answer2{ "100" };
-    mySolution.addBinary(input_a2, input_b2) == answer2;
-}
+//int main() {
+//    std::string input_a2{ "1111" };
+//    std::string input_b2{ "1111" };
+//    std::string answer2{ "11110" };
+//    mySolution.addBinary(input_a2, input_b2) == answer2;
+//}
