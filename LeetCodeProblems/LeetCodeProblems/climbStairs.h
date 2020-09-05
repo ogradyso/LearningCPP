@@ -38,10 +38,14 @@ public:
         else {
             return  (climbStairs(n - 1) + climbStairs(n - 2));
         }*/
-        if (n == 1) {
-            return 1;
+        vector<int> store;
+        store.push_back(1);
+        store.push_back(1);
+        store.push_back(2);
+        for (int i = 3; i <= n; i++) {
+            store.push_back(store[i-1] + store[i -2]);
         }
-        
+        return store[n];
     }
 };
 
