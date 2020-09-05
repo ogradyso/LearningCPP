@@ -27,44 +27,31 @@ using namespace std;
 class Solution {
 public:
     string addBinary(string a, string b) {
-        if (a.size() < b.size()) {
-            auto tempBin = b;
-            b = a;
-            a = tempBin;
-        }
-        auto a_cursor = a.end();
-        a_cursor--;
-        while (!b.empty()) {
-            if (b.back() == '1') {
-                if (*a_cursor == '1') {
-                    *a_cursor = '0';
-                    auto a_next = a_cursor;
-                    if (a_next != a.begin()) {
-                        a_next--;
-                    }
-                    while (*a_next == '1' && a_next != a.begin()) {
-                        *a_next = '0';
-                        a_next--;
-                    }
-                    if (a_next == a.begin()) {
-                        *a_next = '0';
-                        a.insert(a.begin(), '1');
-                        a_cursor++;
-                    }
-                    else {
-                        *a_next = '1';
-                    }
-                }
-                else {
-                    *a_cursor = '1';
-                }
+        // This function adds two binary strings and return 
+            string result = ""; // Initialize result 
+            int s = 0;          // Initialize digit sum 
+
+            // Traverse both strings starting from last 
+            // characters 
+            int i = a.size() - 1, j = b.size() - 1;
+            while (i >= 0 || j >= 0 || s == 1)
+            {
+                // Comput sum of last digits and carry 
+                s += ((i >= 0) ? a[i] - '0' : 0);
+                s += ((j >= 0) ? b[j] - '0' : 0);
+
+                // If current digit sum is 1 or 3, add 1 to result 
+                result = char(s % 2 + '0') + result;
+
+                // Compute carry 
+                s /= 2;
+
+                // Move to next digits 
+                i--; j--;
             }
-            b.pop_back();
-            if (a_cursor != a.begin()) {
-                a_cursor--;
-            }
-        }
-        return { a };
+            return result;
+
+  
     }
 };
 
@@ -103,7 +90,7 @@ TEST_CASE("searchInsert ") {
         REQUIRE(mySolution.addBinary(input_a7, input_b7) == answer7);
         std::string input_a8{ "100100001101100010011100010110000001001111110111010111110100" };
         std::string input_b8{ "111100011011010001100011011000111001011010111101111111010000" };
-        std::string answer8{ "1100000101000110011111111101110111010101010110101011000000000" };
+        std::string answer8{ "1100000101000110011111111101110111010101010110101010111000100" };
         REQUIRE(mySolution.addBinary(input_a8, input_b8) == answer8);
     }
 }

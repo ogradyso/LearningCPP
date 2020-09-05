@@ -38,7 +38,11 @@
 
 //#include "plusOne.h"
 
-#include "addBinary.h"
+//#include "addBinary.h"
+
+//#include "sqrtX.h"
+
+#include "climbStairs.h"
 
 ////timing for optimization:
 struct Stopwatch {
@@ -199,4 +203,11 @@ using namespace std;
 //    std::string input_b2{ "1111" };
 //    std::string answer2{ "11110" };
 //    mySolution.addBinary(input_a2, input_b2) == answer2;
+//}
+
+//climbStairs
+//int main() {
+//    int input{ 2 };
+//    int answer{ 2 };
+//    mySolution.climbStairs(input) == answer);
 //}

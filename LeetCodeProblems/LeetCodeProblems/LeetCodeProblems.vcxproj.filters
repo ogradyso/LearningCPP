@@ -68,5 +68,11 @@
     <ClInclude Include="addBinary.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="sqrtX.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="climbStairs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
