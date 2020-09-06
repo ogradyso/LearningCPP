@@ -74,5 +74,8 @@
     <ClInclude Include="climbStairs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="deleteDuplicates.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
