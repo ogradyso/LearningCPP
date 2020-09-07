@@ -24,26 +24,24 @@ struct ListNode {
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
+
  
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
         auto listTracker = head;
-        ListNode previousNode{ NULL };
-        ListNode* previous = &previousNode;
-        while (listTracker->next != NULL) {
-            if (listTracker->val == previous->val) {
+        if (!head) return nullptr;
+        ListNode* previous = head;
+        while (listTracker) {
+            if (listTracker->val != previous->val) {
                 //remove duplicate
-                previous->next = listTracker->next;
-                listTracker->next = NULL;
-                listTracker = previous->next;
-            }
-            else {
+                previous->next = listTracker;
                 previous = listTracker;
-                listTracker = listTracker->next;
             }
+            listTracker = listTracker->next;
         }
-        return (head);
+        previous->next = nullptr;
+        return head;
     }
 };
 
@@ -66,13 +64,27 @@ TEST_CASE("searchInsert ") {
         ListNode input3_b{ 2 };
         ListNode input4_b{ 3 };
         ListNode input5_b{ 3 };
-        input1.next = &input2_b;
-        input2.next = &input3_b;
+        input1_b.next = &input2_b;
+        input2_b.next = &input3_b;
+        input3_b.next = &input4_b;
+        input4_b.next = &input5_b;
         ListNode* answer1_b = mySolution.deleteDuplicates(&input1_b);
         REQUIRE(answer1_b->val == 1);
         answer1_b = answer1_b->next;
         REQUIRE(answer1_b->val == 2);
         answer1_b = answer1_b->next;
         REQUIRE(answer1_b->val == 3);
+        ListNode input1_c{ 1 };
+        ListNode input2_c{ 1 };
+        ListNode input3_c{ 1 };
+        input1_c.next = &input2_c;
+        input2_c.next = &input3_c;
+        ListNode* answer1_c = mySolution.deleteDuplicates(&input1_c);
+        REQUIRE(answer1_c->val == 1);
+        REQUIRE(answer1_c->next == NULL);
+        ListNode input1_d{};
+        ListNode* answer1_d = mySolution.deleteDuplicates(&input1_d);
+        REQUIRE(answer1_d->val == NULL);
+
     }
 };

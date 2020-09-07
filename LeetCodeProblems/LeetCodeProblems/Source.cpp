@@ -213,3 +213,9 @@ using namespace std;
 //    int answer{ 2 };
 //    mySolution.climbStairs(input) == answer);
 //}
+
+//deleteDuplicates
+//int main() {
+//ListNode* answer1_e = mySolution.deleteDuplicates(NULL);
+//std::cout << answer1_e << std::endl;
+//}
