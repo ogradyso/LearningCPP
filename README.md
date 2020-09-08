@@ -1,2 +1,2 @@
 # LearningCPP
-Just some code from Crash Course in CPP
+Just some code to get me started with C++
