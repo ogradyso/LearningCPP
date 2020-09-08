@@ -153,6 +153,7 @@
     <ClInclude Include="longestPrefix.h" />
     <ClInclude Include="maxSubArray.h" />
     <ClInclude Include="MergeLinkedLists.h" />
+    <ClInclude Include="mergeSortedArray.h" />
     <ClInclude Include="palindromeNumber.h" />
     <ClInclude Include="climbStairs.h" />
     <ClInclude Include="plusOne.h" />

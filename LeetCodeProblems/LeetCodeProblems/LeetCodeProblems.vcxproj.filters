@@ -77,5 +77,8 @@
     <ClInclude Include="deleteDuplicates.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="mergeSortedArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
