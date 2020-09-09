@@ -221,3 +221,19 @@ using namespace std;
 //ListNode* answer1_e = mySolution.deleteDuplicates(NULL);
 //std::cout << answer1_e << std::endl;
 //}
+
+//mergeSortedArray
+//int main() {
+//    vector<int> input1{ 1,2,3,0,0,0 };
+//    vector<int> input2{ 2,5,6 };
+//    vector<int> answer{ 1,2,2,3,5,6 };
+//    for (int i = 0; i < input1.size(); i++) {
+//        std::cout << input1.at(i) << ' ';
+//    }
+//    cout << endl;
+//    mySolution.merge(input1, 3, input2, 3);
+//    for (int i = 0; i < input1.size(); i++) {
+//        std::cout << input1.at(i) << ' ';
+//    }
+//    cout << endl;
+//}
