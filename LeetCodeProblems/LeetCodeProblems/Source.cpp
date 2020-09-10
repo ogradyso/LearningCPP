@@ -223,17 +223,17 @@ using namespace std;
 //}
 
 //mergeSortedArray
-//int main() {
-//    vector<int> input1{ 1,2,3,0,0,0 };
-//    vector<int> input2{ 2,5,6 };
-//    vector<int> answer{ 1,2,2,3,5,6 };
-//    for (int i = 0; i < input1.size(); i++) {
-//        std::cout << input1.at(i) << ' ';
-//    }
-//    cout << endl;
-//    mySolution.merge(input1, 3, input2, 3);
-//    for (int i = 0; i < input1.size(); i++) {
-//        std::cout << input1.at(i) << ' ';
-//    }
-//    cout << endl;
-//}
+int main() {
+    vector<int> input1{ 5,6,7,8,0,0,0,0 };
+    vector<int> input2{ -400,-4, -1, 2 };
+    vector<int> answer{ -400, -4, 1, 2, 5,6,7,8 };
+    for (int i = 0; i < input1.size(); i++) {
+        std::cout << input1.at(i) << ' ';
+    }
+    cout << endl;
+    mySolution.merge(input1, 3, input2, 1);
+    for (int i = 0; i < input1.size(); i++) {
+        std::cout << input1.at(i) << ' ';
+    }
+    cout << endl;
+}
