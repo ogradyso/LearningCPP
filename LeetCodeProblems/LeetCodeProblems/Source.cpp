@@ -46,7 +46,9 @@
 
 //#include "deleteDuplicates."
 
-#include "mergeSortedArray.h"
+//#include "mergeSortedArray.h"
+
+#include "sameTree.h"
 
 ////timing for optimization:
 struct Stopwatch {

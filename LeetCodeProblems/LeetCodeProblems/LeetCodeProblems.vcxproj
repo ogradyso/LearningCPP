@@ -149,6 +149,7 @@
     <ClInclude Include="addBinary.h" />
     <ClInclude Include="countAndSay.h" />
     <ClInclude Include="deleteDuplicates.h" />
+    <ClInclude Include="sameTree.h" />
     <ClInclude Include="lengthOfLastWord.h" />
     <ClInclude Include="longestPrefix.h" />
     <ClInclude Include="maxSubArray.h" />

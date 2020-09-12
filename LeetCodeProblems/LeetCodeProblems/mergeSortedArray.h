@@ -36,20 +36,35 @@ public:
         else {
             auto nums1_iter = nums1.begin();
             auto nums2_iter = nums2.begin();
-            while (nums1_iter != nums1.end() && nums2_iter != nums2.end()) {
-                if ((*nums1_iter > * nums2_iter) || (nums1_iter != nums1.begin() && *nums1_iter == 0)) {
+            int iterationTracker = 0;
+            int nums2_indexTracker = 0;
+            while (nums2_iter != nums2.end()) {
+                if (*nums1_iter >= *nums2_iter ) {
                     nums1.insert(nums1_iter, *nums2_iter);
                     nums1.pop_back();
-                    nums1_iter = nums1.begin();
+                    nums1_iter = nums1.begin() +iterationTracker;
                     nums2_iter++;
+                    nums2_indexTracker++;
                 }
+                else if (iterationTracker >= m+nums2_indexTracker) {
+                    while ((*(nums1.end() - 1) == 0) && (nums1.end()-1 != nums1.begin()+(m +nums2_indexTracker-1))) {
+                        nums1.pop_back();
+                    }
+                    while (nums2_iter != nums2.end()) {
+                        nums1.push_back(*nums2_iter);
+                        nums2_iter++;
+                        nums1_iter = nums1.begin();
+                    }
+                }
+                
                 nums1_iter++;
+                iterationTracker++;
             }
         }
     }
 };
 
-
+//nums1_iter != nums1.end() && 
 Solution mySolution{};
 
 TEST_CASE("searchInsert ") {
@@ -99,6 +114,35 @@ TEST_CASE("searchInsert ") {
         vector<int> answer_h{ -1, 0, 0, 1, 2, 2, 3, 3, 3 };
         mySolution.merge(input1_h, 6, input2_h, 3);
         REQUIRE(input1_h == answer_h);
-
+        vector<int> input1_i{ -1, 1, 1, 3, 3, 3, 0, 0, 0 };
+        vector<int> input2_i{ 0, 2, 2 };
+        vector<int> answer_i{ -1, 0, 1, 1, 2, 2, 3, 3, 3 };
+        mySolution.merge(input1_i, 6, input2_i, 3);
+        REQUIRE(input1_i == answer_i);
+        vector<int> input1_j{ 0, 0, 1, 3, 3, 3, 0, 0, 0 };
+        vector<int> input2_j{ 0, 2, 2 };
+        vector<int> answer_j{ 0, 0, 0, 1, 2, 2, 3, 3, 3 };
+        mySolution.merge(input1_j, 6, input2_j, 3);
+        REQUIRE(input1_j == answer_j);
+        vector<int> input1_k{ 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        vector<int> input2_k{ 0, 0, 0, 0, 0, 0, 0, 1 };
+        vector<int> answer_k{ 0, 0, 0, 0, 0, 0, 0, 0, 1 };
+        mySolution.merge(input1_k, 1, input2_k, 8);
+        REQUIRE(input1_k == answer_k);
+        vector<int> input1_l{ 4, 0, 0, 0, 0, 0 };
+        vector<int> input2_l{ 1,2,3,5,6 };
+        vector<int> answer_l{ 1,2,3,4,5,6 };
+        mySolution.merge(input1_l, 1, input2_l, 5);
+        REQUIRE(input1_l == answer_l);
+        vector<int> input1_m{ 0, 2, 4, 6, 8, 0,0,0,0,0 };
+        vector<int> input2_m{ 1,2,3,5,7 };
+        vector<int> answer_m{ 0,1,2,2,3,4,5,6,7,8 };
+        mySolution.merge(input1_m, 5, input2_m, 5);
+        REQUIRE(input1_m == answer_m);
+        vector<int> input1_n{ 1, 2, 3, 5, 7, 0,0,0,0,0 };
+        vector<int> input2_n{ 0, 2, 4, 6, 8 };
+        vector<int> answer_n{ 0,1,2,2,3,4,5,6,7,8 };
+        mySolution.merge(input1_n, 5, input2_n, 5);
+        REQUIRE(input1_n == answer_n); 
     }
 };

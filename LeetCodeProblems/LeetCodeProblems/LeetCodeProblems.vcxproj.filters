@@ -80,5 +80,8 @@
     <ClInclude Include="mergeSortedArray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="sameTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
