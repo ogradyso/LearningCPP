@@ -1,13 +1,20 @@
 #define OLC_PGE_APPLICATION
 #include "olcPixelGameEngine.h"
 
-class Example : public olc::PixelGameEngine
+class BreakOut : public olc::PixelGameEngine
 {
 public:
-	Example()
+	BreakOut()
 	{
-		sAppName = "Example";
+		sAppName = "Tutorial - BreakOut Clone";
 	}
+
+private:
+	float fBatPos = 20.0f;
+	float fBatWidth = 40.0f;
+
+	olc::vf2d vBall = { 200.0f, 200.0f };
+	float fBatSpeed = 0.1f;
 
 public:
 	bool OnUserCreate() override
@@ -18,10 +25,30 @@ public:
 
 	bool OnUserUpdate(float fElapsedTime) override
 	{
-		// called once per frame
-		for (int x = 0; x < ScreenWidth(); x++)
-			for (int y = 0; y < ScreenHeight(); y++)
-				Draw(x, y, olc::Pixel(rand() % 256, rand() % 256, rand() % 256));
+		Clear(olc::DARK_BLUE);
+
+		// Handle User Input
+		if (GetKey(olc::Key::LEFT).bHeld) fBatPos -= fBatSpeed;
+		if (GetKey(olc::Key::RIGHT).bHeld) fBatPos += fBatSpeed;
+
+		if (fBatPos < 11.0f) fBatPos = 11.0f;
+		if (fBatPos + fBatWidth > float(ScreenWidth()) - 10.0f) fBatPos = float(ScreenWidth()) - 10.0f - fBatWidth;
+
+		//Boundary
+		DrawLine(10, 10, ScreenWidth()-10, 10, olc::YELLOW);
+		DrawLine(10, 10, 10, ScreenHeight()-10, olc::YELLOW);
+		DrawLine(ScreenWidth() -10, 10, ScreenWidth() -10, ScreenHeight() -10, olc::YELLOW);
+		DrawLine(10, ScreenHeight() - 10, ScreenWidth() - 10, ScreenHeight() - 10, olc::YELLOW);
+
+		FillRect(15,15,50,10, olc::DARK_RED);
+		FillRect(75, 15, 50, 10, olc::MAGENTA);
+
+		//draw bat
+		FillRect(int(fBatPos), ScreenHeight() - 20, int(fBatWidth), 10, olc::GREEN);
+
+		//draw ball
+		FillCircle(vBall, 5, olc::CYAN);
+
 		return true;
 	}
 };
@@ -29,9 +56,8 @@ public:
 
 int main()
 {
-	Example demo;
-	if (demo.Construct(256, 240, 4, 4))
+	BreakOut demo;
+	if (demo.Construct(512, 480, 2, 2))
 		demo.Start();
-
 	return 0;
 }
