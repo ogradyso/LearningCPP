@@ -1,5 +1,17 @@
-<Root>
-    <IntValue>10</IntValue>
-    <FloatValue>0.5</FloatValue>
-    <Date day="26" month="April" year="2020" dateFormat="26/04/2014"/>
-</Root>
+<Hello World!>
+    <LessonPrompts>
+        <Prompt>true</Prompt>
+        <Prompt>true</Prompt>
+        <Prompt>true</Prompt>
+        <Prompt>true</Prompt>
+        <Prompt>true</Prompt>
+        <Prompt>true</Prompt>
+        <Answer>true</Answer>
+        <Answer>true</Answer>
+        <Answer>true</Answer>
+        <Answer>true</Answer>
+        <Answer>true</Answer>
+        <Answer>true</Answer>
+    </LessonPrompts>
+    <LessonAnswers/>
+</Hello World!>

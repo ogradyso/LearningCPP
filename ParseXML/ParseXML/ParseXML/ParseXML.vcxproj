@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CreateLearnerLesson.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ParseQuestLesson.cpp" />
   </ItemGroup>

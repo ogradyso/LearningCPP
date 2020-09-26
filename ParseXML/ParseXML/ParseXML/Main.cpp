@@ -10,55 +10,55 @@
 //
 //
 //int main() {
-//	////create a document:
-//	//tinyxml2::XMLDocument xmlDoc;
-//	////add an element (int)
-//	//tinyxml2::XMLNode* pRoot = xmlDoc.NewElement("Root");
-//	//xmlDoc.InsertFirstChild(pRoot);
-//	//tinyxml2::XMLElement* pElement = xmlDoc.NewElement("IntValue");
-//	//pElement->SetText(10);
-//	//pRoot->InsertEndChild(pElement);
-//	////add an element (float)
-//	//pElement = xmlDoc.NewElement("FloatValue");
-//	//pElement->SetText(0.5f);
-//	//pRoot->InsertEndChild(pElement);
-//	////setting an attribute:value pair:
-//	//pElement = xmlDoc.NewElement("Date");
-//	//pElement->SetAttribute("day", 26);
-//	//pElement->SetAttribute("month", "April");
-//	//pElement->SetAttribute("year", 2020);
-//	//pElement->SetAttribute("dateFormat", "26/04/2014");
-//	//pRoot->InsertEndChild(pElement);
+//	//create a document:
+//	tinyxml2::XMLDocument xmlDoc;
+//	//add an element (int)
+//	tinyxml2::XMLNode* pRoot = xmlDoc.NewElement("Root");
+//	xmlDoc.InsertFirstChild(pRoot);
+//	tinyxml2::XMLElement* pElement = xmlDoc.NewElement("IntValue");
+//	pElement->SetText(10);
+//	pRoot->InsertEndChild(pElement);
+//	//add an element (float)
+//	pElement = xmlDoc.NewElement("FloatValue");
+//	pElement->SetText(0.5f);
+//	pRoot->InsertEndChild(pElement);
+//	//setting an attribute:value pair:
+//	pElement = xmlDoc.NewElement("Date");
+//	pElement->SetAttribute("day", 26);
+//	pElement->SetAttribute("month", "April");
+//	pElement->SetAttribute("year", 2020);
+//	pElement->SetAttribute("dateFormat", "26/04/2014");
+//	pRoot->InsertEndChild(pElement);
 //
 //
-//	////next elements within a tree structure:
-//	////needs a vector:
+//	//next elements within a tree structure:
+//	//needs a vector:
 //
-//	///*It is often useful to nest XML elements within other elements in a tree structure, particularly when storing a group of related data.
-//	//Let’s assume that we have a std::vector<int> containing an unknown quantity of values, each of which we want to store in its own element, 
-//	//and that we want to group this list of elements within the XML file.To do this, we first create a parent XMLElement which can be 
-//	//responsible for identifying its children as members of a list.*/
+//	/*It is often useful to nest XML elements within other elements in a tree structure, particularly when storing a group of related data.
+//	Let’s assume that we have a std::vector<int> containing an unknown quantity of values, each of which we want to store in its own element, 
+//	and that we want to group this list of elements within the XML file.To do this, we first create a parent XMLElement which can be 
+//	responsible for identifying its children as members of a list.*/
 //
-//	//pElement = xmlDoc.NewElement("List");
-//	////We then iterate through the vector, creating a new XMLElement for each itemand attaching it as a child of the List element.
+//	pElement = xmlDoc.NewElement("List");
+//	//We then iterate through the vector, creating a new XMLElement for each itemand attaching it as a child of the List element.
 //
-//	//for (const auto& item : vecList)
-//	//{
-//	//	XMLElement* pListElement = xmlDoc.NewElement("Item");
-//	//	pListElement->SetText(item);
+//	for (const auto& item : vecList)
+//	{
+//		XMLElement* pListElement = xmlDoc.NewElement("Item");
+//		pListElement->SetText(item);
 //
-//	//	pElement->InsertEndChild(pListElement);
-//	//}
-//	////If we want to, we can also tell the List element how many members it has, though this is not strictly necessary.
+//		pElement->InsertEndChild(pListElement);
+//	}
+//	//If we want to, we can also tell the List element how many members it has, though this is not strictly necessary.
 //
-//	//pElement->SetAttribute("itemCount", vecGroup.size());
-//	////Don’t forget to attach the List element to the XMLDocument!
+//	pElement->SetAttribute("itemCount", vecGroup.size());
+//	//Don’t forget to attach the List element to the XMLDocument!
 //
-//	//pRoot->InsertEndChild(pElement);
+//	pRoot->InsertEndChild(pElement);
 //
-//	////saving the XML Document to an xml file
-//	//tinyxml2::XMLError eResult = xmlDoc.SaveFile("SampleData.xml");
-//	//XMLCheckResult(eResult);
+//	//saving the XML Document to an xml file
+//	tinyxml2::XMLError eResult = xmlDoc.SaveFile("SampleData.xml");
+//	XMLCheckResult(eResult);
 //
 //	//Loading an XML file into a new XMLDocument
 //	tinyxml2::XMLDocument xmlDoc;
