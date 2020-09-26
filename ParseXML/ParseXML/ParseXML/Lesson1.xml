@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding ="utf-8"?>
+
 <HelloWorld>
     <LessonPrompts>
         <Prompt>In this lesson we are going to write our first C++ program to print "Hello World!" to the conosle. Enter OK:
@@ -14,7 +16,7 @@ Write the include statement for the input-output stream (iostream) library:
         <Prompt>The scope of the main function begins with a curly brace "{" which is usually placed on the following line. Begin the scope of the main function by entering an opening curly brace:
 </Prompt>
         <Prompt>Now you can use the iostream library we entered on the first line to print to the console. You can do this by calling the cout function from the std (standard, often pronounced "stood") library.
- You do this by typing "std::cout and then using the input operator "&lt;&lt;" followed by the output you would like to print: "Hello World!\n" and remember to end the line with a semicolon (;)</Prompt>
+ You do this by typing "std::cout and then using the input operator "&lt;&lt;" followed by the output you would like to print: "Hello World!\"\n and remember to end the line with a semicolon (;)</Prompt>
         <Prompt>Finally, you need to close out the scope of the main function to tell the compiler that the function is complete. You do this by entering a closing curly brace: </Prompt>
     </LessonPrompts>
 </HelloWorld>
