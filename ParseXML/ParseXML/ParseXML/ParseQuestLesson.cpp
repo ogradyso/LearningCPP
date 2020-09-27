@@ -13,7 +13,7 @@
 void getLessonPrompts(const char* lessonRoot, const char* lessonLevel, const char* gameFilePath, std::string &lessonTitle, std::vector<std::string> & promptList, std::vector<std::string> & AnswerList) {
 	tinyxml2::XMLDocument xmlDoc;
 
-	tinyxml2::XMLError eResult = xmlDoc.LoadFile("IntroLessons.xml");
+	tinyxml2::XMLError eResult = xmlDoc.LoadFile(gameFilePath);
 
 	tinyxml2::XMLNode* LessonRoot = xmlDoc.FirstChildElement(lessonRoot);
 	
@@ -53,7 +53,7 @@ int main() {
 	std::string lessonTitle;
 	std::vector<std::string> lessonPrompts;
 	std::vector<std::string> lessonAnswers;
-	getLessonPrompts("IntroLessons", "Lesson1", "IntroLessons.xml", lessonTitle, lessonPrompts, lessonAnswers);
+	getLessonPrompts("IntroLessons", "Lesson1", "GameFiles\\IntroLessons.xml", lessonTitle, lessonPrompts, lessonAnswers);
 	std::cout << "\n\n\n**************************" << lessonTitle << "****************************\n\n\n";
 	for (auto prompt : lessonPrompts) 
 	{
@@ -63,7 +63,7 @@ int main() {
 	lessonTitle.erase();
 	lessonPrompts.clear();
 	lessonAnswers.clear();
-	getLessonPrompts("IntroLessons", "Lesson2", "IntroLessons.xml",lessonTitle, lessonPrompts, lessonAnswers);
+	getLessonPrompts("IntroLessons", "Lesson2", "GameFiles\\IntroLessons.xml",lessonTitle, lessonPrompts, lessonAnswers);
 	std::cout << "\n\n\n**************************" << lessonTitle << "****************************\n\n\n";
 	for (auto prompt : lessonPrompts)
 	{
