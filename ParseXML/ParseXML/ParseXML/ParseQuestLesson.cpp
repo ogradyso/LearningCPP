@@ -7,20 +7,20 @@
 #include <filesystem>
 
 #ifndef XMLCheckResult
-	#define XMLCheckResult(a_eResult) if (a_eResult != tinyxml2::XML_SUCCESS) {printf("Error: %i\n", a_eResult); return "Error parsing XML";}
+	#define XMLCheckResult(a_eResult) if (a_eResult != tinyxml2::XML_SUCCESS) {printf("Error: %i\n", a_eResult); return a_eResult;}
 #endif
 
-std::vector<std::string> getLessonPrompts(const char* gameFilePath) {
+std::vector<std::string> getLessonPrompts(const char* lessonRoot,const char* lessonLevel, const char* gameFilePath) {
 	tinyxml2::XMLDocument xmlDoc;
 
-	tinyxml2::XMLError eResult = xmlDoc.LoadFile("Lesson1.xml");
+	tinyxml2::XMLError eResult = xmlDoc.LoadFile("IntroLessons.xml");
 
 	//XMLCheckResult(eResult);
 
 	//xtracting data from an XMLDocument:
-	tinyxml2::XMLNode* pRoot = xmlDoc.FirstChildElement("HelloWorld");
+	tinyxml2::XMLNode* LessonRoot = xmlDoc.FirstChildElement(lessonRoot);
 	std::vector<std::string> vecList;
-	//if (pRoot == nullptr) std::cout << tinyxml2::XML_ERROR_FILE_READ_ERROR << "\n"; vecList.push_back("Error"); return vecList;
+	//if (LessonRoot == nullptr) std::cout << tinyxml2::XML_ERROR_FILE_READ_ERROR << "\n"; vecList.push_back("Error"); return vecList;
 	
 	//get the elements of a list: 
 	//requires a vector in the XML document:
@@ -28,7 +28,7 @@ std::vector<std::string> getLessonPrompts(const char* gameFilePath) {
 	//tinyxml2::XMLElement* pElement = pRoot->FirstChildElement("LessonPrompts");
 	//if (pElement == nullptr) return tinyxml2::XML_ERROR_PARSING_ELEMENT;
 
-	tinyxml2::XMLElement* pListElement = pRoot->FirstChildElement("LessonPrompts")->FirstChildElement("Prompt");
+	tinyxml2::XMLElement* pListElement = LessonRoot->FirstChildElement(lessonLevel)->FirstChildElement("LessonPrompts")->FirstChildElement("Prompt");
 
 	while (pListElement != nullptr)
 	{
@@ -46,24 +46,18 @@ std::vector<std::string> getLessonPrompts(const char* gameFilePath) {
 
 
 int main() {
-	char gameFilePath[] = { 'L','e','s','s','o','n','1','.','x','m','l'};
-	std::string lessonName = "prompt";
-	const char* charPtrLessonName = lessonName.c_str();
-	std::vector<std::string> lessonPrompts = getLessonPrompts(gameFilePath);
+	std::vector<std::string> lessonPrompts = getLessonPrompts("IntroLessons", "Lesson1", "IntroLessons.xml");
+	std::string lessonName;
 	for (auto prompt : lessonPrompts) 
 	{
 		std::cout << prompt << "\n";
 	}
-	/*tinyxml2::XMLDocument xmlDoc;
-
-	tinyxml2::XMLError eResult = xmlDoc.LoadFile("Lesson1.xml");
-	if (eResult != tinyxml2::XML_SUCCESS) std::cout << "Failed at load";
-
-	tinyxml2::XMLNode* pRoot = xmlDoc.FirstChildElement("HelloWorld");
-	if (pRoot == nullptr) std::cout << "Failed to get root element.";
-
-	tinyxml2::XMLElement* pListElement = pRoot->FirstChildElement("LessonPrompts");
-	if (pListElement == nullptr) std::cout << "Failed to get list element.";*/
+	std::cout << "\n\nNew Lesson\n\n";
+	lessonPrompts = getLessonPrompts("IntroLessons", "Lesson2", "IntroLessons.xml");
+	for (auto prompt : lessonPrompts)
+	{
+		std::cout << prompt << "\n";
+	}
 
 }
 
