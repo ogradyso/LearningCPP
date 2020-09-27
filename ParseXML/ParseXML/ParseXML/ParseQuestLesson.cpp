@@ -10,23 +10,17 @@
 	#define XMLCheckResult(a_eResult) if (a_eResult != tinyxml2::XML_SUCCESS) {printf("Error: %i\n", a_eResult); return a_eResult;}
 #endif
 
-std::vector<std::string> getLessonPrompts(const char* lessonRoot,const char* lessonLevel, const char* gameFilePath) {
+void getLessonPrompts(const char* lessonRoot, const char* lessonLevel, const char* gameFilePath, std::string &lessonTitle, std::vector<std::string> & promptList, std::vector<std::string> & AnswerList) {
 	tinyxml2::XMLDocument xmlDoc;
 
 	tinyxml2::XMLError eResult = xmlDoc.LoadFile("IntroLessons.xml");
 
-	//XMLCheckResult(eResult);
-
-	//xtracting data from an XMLDocument:
 	tinyxml2::XMLNode* LessonRoot = xmlDoc.FirstChildElement(lessonRoot);
-	std::vector<std::string> vecList;
-	//if (LessonRoot == nullptr) std::cout << tinyxml2::XML_ERROR_FILE_READ_ERROR << "\n"; vecList.push_back("Error"); return vecList;
 	
-	//get the elements of a list: 
-	//requires a vector in the XML document:
-
-	//tinyxml2::XMLElement* pElement = pRoot->FirstChildElement("LessonPrompts");
-	//if (pElement == nullptr) return tinyxml2::XML_ERROR_PARSING_ELEMENT;
+	tinyxml2::XMLElement* pLessonTitleElement = LessonRoot->FirstChildElement(lessonLevel)->FirstChildElement("LessonTitle");
+	const char* plessonTitle = pLessonTitleElement->GetText();
+	std::string strTitle{ plessonTitle };
+	lessonTitle = strTitle;
 
 	tinyxml2::XMLElement* pListElement = LessonRoot->FirstChildElement(lessonLevel)->FirstChildElement("LessonPrompts")->FirstChildElement("Prompt");
 
@@ -34,26 +28,43 @@ std::vector<std::string> getLessonPrompts(const char* lessonRoot,const char* les
 	{
 		const char* prompt = pListElement->GetText();
 		std::string strPrompt{prompt};
-		//XMLCheckResult(eResult);
-
-		vecList.push_back(prompt);
+		
+		promptList.push_back(prompt);
 
 		pListElement = pListElement->NextSiblingElement("Prompt");
 	}
-	return vecList;
+
+	pListElement = LessonRoot->FirstChildElement(lessonLevel)->FirstChildElement("LessonAnswers")->FirstChildElement("Answer");
+
+	while (pListElement != nullptr)
+	{
+		const char* answer = pListElement->GetText();
+		std::string strPrompt{ answer };
+
+		AnswerList.push_back(answer);
+
+		pListElement = pListElement->NextSiblingElement("Answer");
+	}
 	
 };
 
 
 int main() {
-	std::vector<std::string> lessonPrompts = getLessonPrompts("IntroLessons", "Lesson1", "IntroLessons.xml");
-	std::string lessonName;
+	std::string lessonTitle;
+	std::vector<std::string> lessonPrompts;
+	std::vector<std::string> lessonAnswers;
+	getLessonPrompts("IntroLessons", "Lesson1", "IntroLessons.xml", lessonTitle, lessonPrompts, lessonAnswers);
+	std::cout << "\n\n\n**************************" << lessonTitle << "****************************\n\n\n";
 	for (auto prompt : lessonPrompts) 
 	{
 		std::cout << prompt << "\n";
 	}
 	std::cout << "\n\nNew Lesson\n\n";
-	lessonPrompts = getLessonPrompts("IntroLessons", "Lesson2", "IntroLessons.xml");
+	lessonTitle.erase();
+	lessonPrompts.clear();
+	lessonAnswers.clear();
+	getLessonPrompts("IntroLessons", "Lesson2", "IntroLessons.xml",lessonTitle, lessonPrompts, lessonAnswers);
+	std::cout << "\n\n\n**************************" << lessonTitle << "****************************\n\n\n";
 	for (auto prompt : lessonPrompts)
 	{
 		std::cout << prompt << "\n";
