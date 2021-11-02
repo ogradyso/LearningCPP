@@ -12,7 +12,7 @@
 static TCHAR szWindowClass[] = _T("DesktopApp");
 
 // The string that appears in the application's title bar.
-static TCHAR szTitle[] = _T("Windows Desktop Guided Tour Application");
+static TCHAR szTitle[] = _T("Yo, this is Shaun's dope ass application");
 
 HINSTANCE hInst;
 
@@ -69,7 +69,7 @@ int CALLBACK WinMain(
         szTitle,
         WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT, CW_USEDEFAULT,
-        500, 100,
+        500, 500,
         NULL,
         NULL,
         hInstance,
@@ -114,7 +114,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     PAINTSTRUCT ps;
     HDC hdc;
-    TCHAR greeting[] = _T("Hello, Windows desktop!");
+    TCHAR greeting[] = _T("I made an application.");
+    TCHAR ownerStatement[] = _T("This is Dope!");
 
     switch (message)
     {
@@ -127,6 +128,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         TextOut(hdc,
             5, 5,
             greeting, _tcslen(greeting));
+        TextOut(hdc, 
+            5, 50,
+            ownerStatement, _tcslen(greeting));
         // End application-specific layout section.
 
         EndPaint(hWnd, &ps);
