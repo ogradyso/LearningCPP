@@ -48,10 +48,24 @@
 class Solution {
 public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
-        bool sameTree = {false};
-        while (p->left != nullptr && p->right != nullptr) {
-
+        //if both p and q are null we have reached the end of both trees
+        /*if (!p && !q) {
+            return true;
         }
+        return p && q && p->val == q->val &&
+            isSameTree(p->left, q->left) &&
+            isSameTree(p->right, q->right);*/
+
+        //Why is this soltuion faster than above?
+        if (p == NULL && q == NULL) return true;
+        else if (p == NULL && q != NULL) return false;
+        else if (p != NULL && q == NULL) return false;
+
+        if (p->val != q->val) return false;
+
+        if (!isSameTree(p->left, q->left)) return false;
+        if (!isSameTree(p->right, q->right)) return false;
+        return true;
     }
 };
 
