@@ -48,7 +48,9 @@
 
 //#include "mergeSortedArray.h"
 
-#include "sameTree.h"
+//#include "sameTree.h"
+
+#include "treeInOrderTraversal.h"
 
 ////timing for optimization:
 struct Stopwatch {
